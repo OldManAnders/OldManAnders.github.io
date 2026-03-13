@@ -1,4 +1,4 @@
-# 💫 About Me:
+# 🙅 About Me:
 Average competency coder, tinkerer, and academic with a strong interest in<br>automation and image analysis.<br><br>My research focuses on how state‐of‐the‐art computer vision algorithms perform in complex, real‐world environments — and how we can optimize them to balance high performance with responsible & ethical application.<br><br>My hobbies are gaming, a little coding, 3D-printing, designing mechanical structures, and spending time exploring nature.
 
 This is a temporaru 
