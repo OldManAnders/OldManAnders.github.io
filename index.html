@@ -1,0 +1,89 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ASJ - About</title>
+<meta name="description" content="Anders Skaarup Johansen · Postdoc at Aalborg University, computer vision and responsible AI.">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+<header class="site">
+  <div class="wrap nav">
+    <a class="brand" href="index.html"><span class="brand-mark">ASJ</span> About Me </small></a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="index.html" aria-current="page">About</a>
+      <a href="cv.html">CV</a>
+      <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <h1>Who am i?</h1>
+    <div class="hero-row">
+      <img class="cv-avatar" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" loading="lazy" style="width:150px;height:150px" onerror="this.style.display='none'">
+      <div class="hero-text">
+        <p class="lead">I work on automation and image analysis — how state-of-the-art computer vision performs outside the lab, and how we optimize it to stay high-performing <em>and</em> responsibly applied. Currently postdoc at Aalborg University (REPAI) and National Expert for AI standardization (Dansk Standard / CEN-CENELEC JTC21).</p>
+      </div>
+    </div>  
+    <div class="pill-row">
+      <span class="pill"><i class="fab fa-github"></i> <a href="https://github.com/OldManAnders">/OldManAnders</a></span>
+      <span class="pill"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
+      <span class="pill"><i class="fas fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&hl=en&oi=ao">Google Scholar</a></span>
+      <span class="pill"><i class="fa-brands fa-orcid"></i> <a href="https://orcid.org/0000-0002-9330-522X">ORCID</a></span>
+    </div>
+  </section>
+
+  <h2>Selected work</h2>
+  <ul class="repo-list" id="repos" data-username="OldManAnders">
+    <li class="repo">
+      <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">Explore on GitHub <i class="fas fa-arrow-up-right-from-square" style="font-size:.8em; opacity:.6"></i></a>
+      <span class="meta"><span class="dot py"></span> Python · Computer Vision</span>
+      <p class="desc">Latest repos load automatically via GitHub API — or replace these 3 cards with your hand-picked 3–6 projects. Keep one line each.</p>
+    </li>
+    <li class="repo">
+      <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Publications on Scholar</a>
+      <span class="meta">Robust detection & segmentation in unconstrained environments</span>
+      <p class="desc">PhD: Generic Object Detection and Segmentation for Real-world Environments (AAU, 2020–2023).</p>
+    </li>
+    <li class="repo">
+      <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">Self-hosted HPC & tinkering</a>
+      <span class="meta">Mechanical design · Embedded · Automation</span>
+      <p class="desc">Designing mechanical structures and running self-hosted HPC outside of research — bridges lab to field.</p>
+    </li>
+  </ul>
+
+  <h2>Current focus</h2>
+  <div class="grid cols2">
+    <div class="card">
+      <h3><i class="fas fa-microscope" style="color:var(--accent)"></i> Responsible use of AI</h3>
+      <p>Adapting ethical, societal and legal demands to computable metrics for public and private sector evaluation, at the National Center for AI in Society.</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-scale-balanced" style="color:var(--accent)"></i> Standardization</h3>
+      <p>National Expert at Dansk Standard (S-855) & CEN/CENELEC JTC21, working on evaluation of computer-vision systems under the AI-Act.</p>
+    </div>
+  </div>
+  <div class="grid cols2" style="margin-top:16px">
+    <div class="card">
+      <h3><i class="fas fa-fish" style="color:var(--accent)"></i> Computer-Vision in Marine Environments</h3>
+      <p>From sewer inspection robots (ASIR) and super-resolution on embedded systems to multimodal detection in the wild — always with real-world constraints.</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-envelope-open" style="color:var(--accent)"></i> Contact</h3>
+      <p>Easiest To reach via email, or through linkedin.</p>
+      <span class="pill"><i class="fas fa-envelope"></i> <a href="mailto:asj@vornet.dk">asjo@create.aau.dk</a></span>
+      <span class="pill"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
+    </div>
+  </div>
+
+</main>
+
+<footer><div class="wrap">© <span id="y"></span> Anders Skaarup Johansen - This page is plain HTML, no tracking.</div></footer>
+<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<script src="assets/js/main.js"></script>
+</body>
+</html>
