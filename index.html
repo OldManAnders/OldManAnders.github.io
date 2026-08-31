@@ -6,6 +6,7 @@
 <title>ASJ - About</title>
 <meta name="description" content="Anders Skaarup Johansen · Postdoc at Aalborg University, computer vision and responsible AI.">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -26,9 +27,11 @@
     <div class="hero-row">
       <img class="cv-avatar" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" loading="lazy" style="width:150px;height:150px" onerror="this.style.display='none'">
       <div class="hero-text">
-        <p class="lead">I work on automation and image analysis — how state-of-the-art computer vision performs outside the lab, and how we optimize it to stay high-performing <em>and</em> responsibly applied. Currently postdoc at Aalborg University (REPAI) and National Expert for AI standardization (Dansk Standard / CEN-CENELEC JTC21).</p>
+        <h2>Anders Skaarup Johansen</h2>
+        <p class="lead">I am a computer-vision researcher and hobbyist tinkerer, whos researched has focused on how state-of-the-art computer vision performs outside the lab, and how we optimize to stay high-performing while maintaining alignment with human values and it's intended purpose.</p>
       </div>
-    </div>  
+    </div>
+    <div> I'm currently a Postdoc at Aalborg University and the national Center for AI in Society.</div>  
     <div class="pill-row">
       <span class="pill"><i class="fab fa-github"></i> <a href="https://github.com/OldManAnders">/OldManAnders</a></span>
       <span class="pill"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
@@ -37,52 +40,39 @@
     </div>
   </section>
 
-  <h2>Selected work</h2>
-  <ul class="repo-list" id="repos" data-username="OldManAnders">
-    <li class="repo">
-      <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">Explore on GitHub <i class="fas fa-arrow-up-right-from-square" style="font-size:.8em; opacity:.6"></i></a>
-      <span class="meta"><span class="dot py"></span> Python · Computer Vision</span>
-      <p class="desc">Latest repos load automatically via GitHub API — or replace these 3 cards with your hand-picked 3–6 projects. Keep one line each.</p>
-    </li>
-    <li class="repo">
-      <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&hl=en&oi=ao" target="_blank" rel="noopener">Publications on Scholar</a>
-      <span class="meta">Robust detection & segmentation in unconstrained environments</span>
-      <p class="desc">PhD: Generic Object Detection and Segmentation for Real-world Environments (AAU, 2020–2023).</p>
-    </li>
-    <li class="repo">
-      <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">Self-hosted HPC & tinkering</a>
-      <span class="meta">Mechanical design · Embedded · Automation</span>
-      <p class="desc">Designing mechanical structures and running self-hosted HPC outside of research — bridges lab to field.</p>
-    </li>
-  </ul>
-
-  <h2>Current focus</h2>
+  <h3>What is my current focus</h3>
   <div class="grid cols2">
     <div class="card">
       <h3><i class="fas fa-microscope" style="color:var(--accent)"></i> Responsible use of AI</h3>
       <p>Adapting ethical, societal and legal demands to computable metrics for public and private sector evaluation, at the National Center for AI in Society.</p>
     </div>
-    <div class="card">
-      <h3><i class="fas fa-scale-balanced" style="color:var(--accent)"></i> Standardization</h3>
-      <p>National Expert at Dansk Standard (S-855) & CEN/CENELEC JTC21, working on evaluation of computer-vision systems under the AI-Act.</p>
-    </div>
-  </div>
-  <div class="grid cols2" style="margin-top:16px">
-    <div class="card">
+      <div class="card">
       <h3><i class="fas fa-fish" style="color:var(--accent)"></i> Computer-Vision in Marine Environments</h3>
       <p>From sewer inspection robots (ASIR) and super-resolution on embedded systems to multimodal detection in the wild — always with real-world constraints.</p>
     </div>
+  </div>
+  <div class="grid cols2" style="margin-top:16px">
+      <div class="card">
+      <h3><i class="mdi mdi-clipboard-edit" style="color:var(--accent)"></i> Standardization</h3>
+      <p>National Expert at Dansk Standard (S-855) & CEN/CENELEC JTC21, working on evaluation of computer-vision systems under to support the AI-Act. Ensuring accurate assessment of system performance.</p>
+    </div>
     <div class="card">
-      <h3><i class="fas fa-envelope-open" style="color:var(--accent)"></i> Contact</h3>
-      <p>Easiest To reach via email, or through linkedin.</p>
-      <span class="pill"><i class="fas fa-envelope"></i> <a href="mailto:asj@vornet.dk">asjo@create.aau.dk</a></span>
-      <span class="pill"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
+      <h3><i class="mdi mdi-printer-3d-nozzle" style="color:var(--accent)"></i> 3D Printing</h3>
+      <p>Designing and building 3D printed structures for various applications. Currently i am in my 'Functional Print'-phase, where i focus on printing functional parts for my homelab.
+      </p>
     </div>
   </div>
 
+  <h3>GitHub Activity</h3>
+  <div id="contributions"></div>
+
+  <h3>Most active repos this month</h3>
+  <p id="repos-summary" class="repo-summary"></p>
+  <ul class="repo-list" id="repos" data-username="OldManAnders"></ul>
+
 </main>
 
-<footer><div class="wrap">© <span id="y"></span> Anders Skaarup Johansen - This page is plain HTML, no tracking.</div></footer>
+<footer><div class="wrap">© <span id="y"></span> Anders Skaarup Johansen - Get in touch: <i class="fas fa-envelope"></i> <a href="mailto:asj@vornet.dk">asjo@create.aau.dk</a> or <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></div></footer>
 <script>document.getElementById('y').textContent=new Date().getFullYear()</script>
 <script src="assets/js/main.js"></script>
 </body>

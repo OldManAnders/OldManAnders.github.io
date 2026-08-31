@@ -290,6 +290,14 @@ header.site {
 
 /* Section headings (e.g. "Projects", "Experience") */
 h2 {
+  font-size: 1.52rem;
+  font-weight: 650;
+  text-transform: uppercase;
+  color: var(--fg);
+  margin: 0px 0px -2px;
+}
+
+h3 {
   font-size: .82rem;
   font-weight: 700;
   letter-spacing: .08em;
@@ -298,6 +306,12 @@ h2 {
   margin: 36px 0 14px;
   padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
+}
+
+.repo-summary {
+  color: var(--muted);
+  font-size: .9rem;
+  margin: 0 0 12px;
 }
 
 /* --------------------------------------------------------------------------
@@ -956,6 +970,80 @@ footer a {
 
 footer a:hover {
   color: var(--fg);
+}
+
+/* --------------------------------------------------------------------------
+   9.5 GitHub contribution calendar (index.html) — commit grid, Dracula green
+   -------------------------------------------------------------------------- */
+.cal {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: var(--shadow);
+  overflow-x: auto;
+}
+
+.cal-summary {
+  font-size: .92rem;
+  font-weight: 700;
+  color: var(--fg);
+  margin: 0 0 14px;
+}
+
+.cal-scroll { min-width: 800px; }
+
+.cal-months {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: 1fr;
+  grid-template-columns: repeat(52, 11px);
+  gap: 3px;
+  padding-left: 26px;
+  margin-bottom: 4px;
+}
+
+.cal-month {
+  font-size: .62rem;
+  color: var(--muted);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.cal-grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-template-rows: repeat(7, 11px);
+  grid-template-columns: 26px repeat(52, 11px);
+  gap: 3px;
+}
+
+.cal-wd {
+  font-size: .6rem;
+  color: var(--muted);
+  line-height: 11px;
+}
+
+.cal-cell {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px;
+  background: var(--bg);
+}
+
+.cal-cell.lvl-1 { background: rgba(80, 250, 123, .22); }
+.cal-cell.lvl-2 { background: rgba(80, 250, 123, .45); }
+.cal-cell.lvl-3 { background: rgba(80, 250, 123, .72); }
+.cal-cell.lvl-4 { background: #50fa7b; }
+
+.cal-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 4px;
+  margin-top: 12px;
+  font-size: .68rem;
+  color: var(--muted);
 }
 
 /* --------------------------------------------------------------------------
