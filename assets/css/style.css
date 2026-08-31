@@ -2,19 +2,19 @@
    1. Design tokens — Primary colors, spacing, shadows, etc. 
    -------------------------------------------------------------------------- */
 :root {
-  --fg: #0f172a;            /* main text (near-black blue) */
-  --muted: #64748b;         /* secondary text */
-  --muted-2: #94a3b8;       /* tertiary / icon color */
-  --accent: #1e40af;        /* links + highlights */
-  --accent-bg: #eff6ff;     /* light accent background (eyebrow, etc.) */
-  --border: #e2e8f0;        /* default border */
-  --border-strong: #cbd5e1; /* hover / stronger border */
-  --bg: #f8fafc;            /* page background */
-  --card: #ffffff;          /* card / paper background */
+  --fg: #f8f8f2;            /* main text (Dracula foreground) */
+  --muted: #6272a4;         /* secondary text (Dracula comment) */
+  --muted-2: rgba(248, 248, 242, .45); /* tertiary / icon color */
+  --accent: #bd93f9;        /* links + highlights (Dracula purple) */
+  --accent-bg: rgba(189, 147, 249, .12); /* light accent background (eyebrow, etc.) */
+  --border: #44475a;        /* default border (Dracula current line) */
+  --border-strong: #6272a4; /* hover / stronger border */
+  --bg: #282a36;            /* page background (Dracula background) */
+  --card: #21222c;          /* card / paper background (Dracula elevated) */
   --max: 840px;             /* max content width */
   --radius: 14px;           /* default card rounding */
-  --shadow: 0 1px 3px rgba(15,23,42,.06), 0 8px 24px rgba(15,23,42,.04);
-  --shadow-hover: 0 4px 12px rgba(15,23,42,.08), 0 12px 32px rgba(15,23,42,.06);
+  --shadow: 0 1px 3px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+  --shadow-hover: 0 4px 12px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
 }
 
 /* --------------------------------------------------------------------------
@@ -62,7 +62,7 @@ header.site {
   position: sticky;         /* stays at top while scrolling */
   top: 0;
   z-index: 10;
-  background: rgba(255, 255, 255, .9);
+  background: rgba(33, 34, 44, .9);
   backdrop-filter: saturate(180%) blur(10px); /* frosted glass effect */
   border-bottom: 1px solid var(--border);
 }
@@ -92,8 +92,8 @@ header.site {
   border-radius: 9px;
   display: grid;
   place-items: center;
-  background: var(--fg);
-  color: #fff;
+  background: var(--accent);
+  color: var(--bg);
   font-size: .78rem;
   font-weight: 800;
   letter-spacing: .04em;
@@ -125,7 +125,7 @@ header.site {
 }
 
 .nav-links a:hover {
-  background: #fff;
+  background: var(--card);
   border-color: var(--border);
   color: var(--fg);
   text-decoration: none;
@@ -173,7 +173,7 @@ header.site {
   text-transform: uppercase;
   color: var(--accent);
   background: var(--accent-bg);
-  border: 1px solid #dbeafe;
+  border: 1px solid rgba(189,147,249,.35);
   padding: 5px 10px;
   border-radius: 999px;
   margin-bottom: 2px;
@@ -200,7 +200,7 @@ header.site {
 .hero p.lead {
   font-size: 1.08rem;
   line-height: 1.6;
-  color: #1e293b;
+  color: var(--fg);
   margin: 0 0 18px;
   max-width: 62ch;
 }
@@ -224,7 +224,7 @@ header.site {
   gap: 7px;
   font-size: .88rem;
   color: var(--accent);
-  background: #fff;
+  background: var(--card);
   border: 1px solid var(--border);
   padding: 6px 11px;
   border-radius: 8px;
@@ -238,7 +238,7 @@ header.site {
 
 .pill:hover {
   border-color: var(--border-strong);
-  box-shadow: 0 1px 2px rgba(15,23,42,.06);
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
 
 .pill i {
@@ -260,31 +260,31 @@ header.site {
   gap: 8px;
   padding: 10px 16px;
   border-radius: 999px;
-  border: 1px solid var(--fg);
-  background: var(--fg);
-  color: #fff;
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: var(--bg);
   font-weight: 600;
   font-size: .93rem;
   transition: .15s;
-  box-shadow: 0 1px 2px rgba(15,23,42,.1);
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
 }
 
 .btn:hover {
   transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(15,23,42,.12);
+  box-shadow: 0 8px 24px rgba(0,0,0,.35);
   text-decoration: none;
-  background: #1e293b;
-  border-color: #1e293b;
+  background: #caa9fa;
+  border-color: #caa9fa;
 }
 
 .btn.secondary {
-  background: #fff;
+  background: var(--card);
   color: var(--fg);
   border-color: var(--border-strong);
 }
 
 .btn.secondary:hover {
-  background: #fff;
+  background: var(--card);
   border-color: var(--fg);
 }
 
@@ -479,21 +479,21 @@ h2 {
   gap: 7px;
   padding: 8px 14px;
   border-radius: 8px;
-  border: 1px solid var(--border);
-  background: var(--fg);
+  border: 1px solid var(--accent);
+  background: var(--accent);
   cursor: pointer;
   font: inherit;
   font-size: .88rem;
   font-weight: 600;
-  color: #fff;
-  box-shadow: 0 1px 2px rgba(15,23,42,.05);
+  color: var(--bg);
+  box-shadow: 0 1px 2px rgba(0,0,0,.3);
   transition: .15s;
 }
 
 .toolbar button:hover {
-  background: var(--fg);
-  color: #fff;
-  border-color: var(--fg);
+  background: #caa9fa;
+  color: var(--bg);
+  border-color: #caa9fa;
   transform: translateY(-1px);
 }
 
@@ -520,7 +520,7 @@ details[open] {
 }
 
 details[open] summary {
-  background: #f8fafc;
+  background: var(--bg);
   border-bottom: 1px solid var(--border);
 }
 
@@ -549,7 +549,7 @@ summary::after {
   height: 26px;
   border-radius: 50%;
   border: 1px solid var(--border);
-  background: #fff;
+  background: var(--card);
   color: var(--muted);
   font-weight: 400;
   font-size: 1.05rem;
@@ -560,9 +560,9 @@ summary::after {
 
 details[open] summary::after {
   content: "-";
-  background: var(--fg);
-  color: #fff;
-  border-color: var(--fg);
+  background: var(--accent);
+  color: var(--bg);
+  border-color: var(--accent);
 }
 
 .sum-left {
@@ -576,7 +576,7 @@ details[open] summary::after {
   font-weight: 500;
   font-size: .84rem;
   white-space: nowrap;
-  background: #f1f5f9;
+  background: var(--bg);
   border: 1px solid var(--border);
   padding: 4px 9px;
   border-radius: 999px;
@@ -589,8 +589,8 @@ details[open] summary::after {
 
 .details-body {
   padding: 14px 16px 16px;
-  background: #fff;
-  color: #334155;
+  background: var(--card);
+  color: var(--fg);
   font-size: .94rem;
   line-height: 1.6;
 }
@@ -615,7 +615,7 @@ details[open] summary::after {
   padding: 4px 9px;
   border-radius: 999px;
   border: 1px solid var(--border);
-  background: #f8fafc;
+  background: var(--bg);
   color: var(--muted);
 }
 
@@ -627,10 +627,10 @@ details[open] summary::after {
   border: 1px solid var(--border-strong);
   border-radius: 16px;
   padding: 28px;
-  box-shadow: 0 1px 3px rgba(15,23,42,.05), 0 12px 40px rgba(15,23,42,.10), 0 0 0 1px rgba(15,23,42,.04);
+  box-shadow: 0 1px 3px rgba(0,0,0,.3), 0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(0,0,0,.2);
   position: relative;
   overflow: hidden;
-  outline: 1px solid rgba(15,23,42,.04);
+  outline: 1px solid rgba(0,0,0,.2);
   outline-offset: 2px;
 }
 
@@ -660,7 +660,7 @@ details[open] summary::after {
   border-radius: 8px;
   object-fit: cover;            /* crop image to circle without distortion */
   border: 2px solid var(--border-strong);
-  background: #e2e8f0;
+  background: var(--border);
   flex: 0 0 auto;
 }
 
@@ -728,7 +728,7 @@ details[open] summary::after {
 }
 
 .cv-main details[open] summary {
-  background: #f8fafc;
+  background: var(--bg);
 }
 
 .cv-main summary {
@@ -769,7 +769,7 @@ details[open] summary::after {
   font-size: .72rem;
   font-weight: 600;
   color: var(--muted);
-  background: #f1f5f9;
+  background: var(--bg);
   border: 1px solid var(--border);
   padding: 3px 7px;
   border-radius: 999px;
@@ -781,8 +781,8 @@ details[open] summary::after {
   color: var(--muted-2);
 }
 
-.chip--end { background: #fff; }
-.chip--loc { background: #fff; }
+.chip--end { background: var(--card); }
+.chip--loc { background: var(--card); }
 
 /* Short preview text shown when the <details> is collapsed (2-line clamp) */
 .cv-preview {
@@ -803,7 +803,7 @@ details[open] summary::after {
   border-radius: 12px;
   padding: 16px 18px;
   margin: 0 0 18px;
-  color: #334155;
+  color: var(--fg);
   font-size: .94rem;
   line-height: 1.6;
   box-shadow: var(--shadow);
@@ -831,7 +831,7 @@ details[open] summary::after {
   height: auto;
   border-radius: 10px;
   border: 1px solid var(--border);
-  background: #f8fafc;
+  background: var(--bg);
 }
 
 .cv-media figcaption {
@@ -850,7 +850,7 @@ details[open] summary::after {
   height: 12px;
   border-radius: 50%;
   background: var(--border-strong);
-  border: 2px solid #fff;
+  border: 2px solid var(--card);
   box-shadow: 0 0 0 1px var(--border);
 }
 
@@ -900,7 +900,7 @@ details[open] summary::after {
 
 .skill-pills span {
   font-size: .8rem;
-  background: #f8fafc;
+  background: var(--bg);
   border: 1px solid var(--border);
   padding: 5px 9px;
   border-radius: 999px;
@@ -921,7 +921,7 @@ details[open] summary::after {
   display: grid;
   place-items: center;
   background: var(--accent-bg);
-  border: 1px solid #dbeafe;
+  border: 1px solid rgba(189,147,249,.35);
   color: var(--accent);
   flex: 0 0 auto;
 }
@@ -946,7 +946,7 @@ footer {
   padding: 20px 0;
   color: var(--muted);
   font-size: .88rem;
-  background: rgba(255, 255, 255, .6);
+  background: rgba(33, 34, 44, .6);
 }
 
 footer a {
