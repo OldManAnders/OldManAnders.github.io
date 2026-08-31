@@ -62,7 +62,7 @@
   const USERNAME = (reposEl && reposEl.dataset.username) || "";
   const calEl = $("#contributions");
   const CACHE_KEY = "gh-activity-v3";
-  const CACHE_TTL = 24 * 60 * 60 * 1000;
+  const CACHE_TTL = 60 * 60 * 1000;
   const WEEKS = 52;
 
   // Cache-first: render whatever we have, then refresh in the background at
@@ -81,14 +81,14 @@
   };
 
   // commit_activity / code_frequency return 202 {} while GitHub generates the
-  // stats. Poll briefly (3 tries; every 202 still counts toward the rate limit)
+  // stats. Poll briefly (4 tries; every 202 still counts toward the rate limit)
   // then give up on the repo. Network errors just return null.
   async function fetchStats(path) {
     const url = `https://api.github.com/repos/${USERNAME}/${path}`;
-    for (let i = 0; i < 3; i++) {
+    for (let i = 0; i < 4; i++) {
       let res;
       try { res = await fetch(url); } catch (_) { return null; }
-      if (res.status === 202) { await new Promise((r) => setTimeout(r, 2000 + i * 2000)); continue; }
+      if (res.status === 202) { if (i < 3) await new Promise((r) => setTimeout(r, (i + 1) * 2000)); continue; }
       if (!res.ok) return null;
       try { return await res.json(); } catch (_) { return null; }
     }
@@ -224,6 +224,13 @@
     return { repos: stats };
   }
 
+  const updatedEl = $("#gh-updated");
+  const showUpdated = (at, failed) => {
+    if (!updatedEl) return;
+    const time = new Date(at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+    updatedEl.textContent = `Last updated ${time}` + (failed ? " \u00b7 refresh failed, showing cached data" : "");
+  };
+
   async function loadActivity() {
     if (!USERNAME) return;
     try {
@@ -232,6 +239,7 @@
         renderCalendar(cached.data);
         renderSummary(cached.data);
         renderRepos(cached.data);
+        showUpdated(cached.at, false);
         if (Date.now() - cached.at < CACHE_TTL) return; // fresh enough, skip network
       }
       const data = await fetchActivity();
@@ -240,11 +248,16 @@
         renderCalendar(data);
         renderSummary(data);
         renderRepos(data);
-      } else if (!cached) {
+        showUpdated(Date.now(), false);
+      } else if (cached) {
+        showUpdated(cached.at, true);
+      } else {
         renderError();
       }
     } catch (_) {
-      if (!readCache()) renderError();
+      const cached = readCache();
+      if (cached) showUpdated(cached.at, true);
+      else renderError();
     }
   }
 
