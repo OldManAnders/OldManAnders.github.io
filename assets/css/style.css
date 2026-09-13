@@ -921,6 +921,10 @@ footer a:hover {
   margin: 0 0 14px;
 }
 
+#contributions {
+  overflow-x: auto;
+}
+
 .cal-scroll {
   min-width: 800px;
 }
