@@ -1,31 +1,28 @@
-﻿/* --------------------------------------------------------------------------
-   1. Design tokens — Primary colors, spacing, shadows, etc. 
-   -------------------------------------------------------------------------- */
+﻿/* --------  1. Design tokens Primary colors, spacing, shadows, etc.    --------*/
 :root {
-  --fg: #f8f8f2;            /* main text (Dracula foreground) */
-  --muted: #6272a4;         /* secondary text (Dracula comment) */
+  --fg: #f8f8f2; /* main text (Dracula foreground) */
+  --muted: #6272a4; /* secondary text (Dracula comment) */
   --muted-2: rgba(248, 248, 242, .45); /* tertiary / icon color */
-  --accent: #bd93f9;        /* links + highlights (Dracula purple) */
-  --accent-bg: rgba(189, 147, 249, .12); /* light accent background (eyebrow, etc.) */
-  --border: #44475a;        /* default border (Dracula current line) */
-  --border-strong: #6272a4; /* hover / stronger border */
-  --bg: #282a36;            /* page background (Dracula background) */
-  --card: #21222c;          /* card / paper background (Dracula elevated) */
-  --max: 840px;             /* max content width */
-  --radius: 14px;           /* default card rounding */
+  --accent: #bd93f9; /* links + highlights (Dracula purple) */
+  --accent-bg: rgba(189, 147, 249, .12); /* light accent background */
+  --border: #44475a; /* default border (Dracula current line) */
+  --border-strong: #6272a4;  /* hover / stronger border */
+  --bg: #282a36;  /* page background (Dracula background) */
+  --card: #21222c;  /* card / paper background (Dracula elevated) */
+  --max: 840px;  /* max content width */
+  --radius: 14px;  /* default card rounding */
   --shadow: 0 1px 3px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
   --shadow-hover: 0 4px 12px rgba(0,0,0,.4), 0 12px 32px rgba(0,0,0,.35);
 }
 
-/* --------------------------------------------------------------------------
-   2. Base / reset — box-sizing + font smoothing
-   -------------------------------------------------------------------------- */
+/* --------  2. Base / reset box-sizing + font smoothing   --------*/
 * {
   box-sizing: border-box;
 }
 
 html {
-  scroll-behavior: smooth;          /* anchor links scroll nicely */
+  scroll-behavior: smooth;
+  /* anchor links scroll nicely */
   -webkit-font-smoothing: antialiased;
 }
 
@@ -48,6 +45,12 @@ a:hover {
   text-decoration: underline;
 }
 
+/* Every icon is one size: they are glyphs, so they would otherwise inherit
+   whatever font-size their container happens to use. */
+i[class*="fa-"] {
+  font-size: 1em;
+}
+
 /* Centered content column used on every page */
 .wrap {
   max-width: var(--max);
@@ -55,15 +58,15 @@ a:hover {
   padding: 0 24px;
 }
 
-/* --------------------------------------------------------------------------
-   3. Sticky header & navigation
-   -------------------------------------------------------------------------- */
+/* --------  3. Sticky header & navigation   --------*/
 header.site {
-  position: sticky;         /* stays at top while scrolling */
+  position: sticky;
+  /* stays at top while scrolling */
   top: 0;
   z-index: 10;
   background: rgba(33, 34, 44, .9);
-  backdrop-filter: saturate(180%) blur(10px); /* frosted glass effect */
+  backdrop-filter: saturate(180%) blur(10px);
+  /* frosted glass effect */
   border-bottom: 1px solid var(--border);
 }
 
@@ -94,10 +97,16 @@ header.site {
   place-items: center;
   background: var(--accent);
   color: var(--bg);
-  font-size: .78rem;
-  font-weight: 800;
-  letter-spacing: .04em;
   flex: 0 0 auto;
+  overflow: hidden;
+  padding: 0;
+}
+
+.brand-mark img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: inherit;
 }
 
 .brand small {
@@ -116,14 +125,16 @@ header.site {
 
 .nav-links a {
   padding: 7px 8px;
-  border-radius: 16px;     /* pill shape */
+  border-radius: 16px;
+  /* pill shape */
   font-size: 1.10rem;
   font-weight: 500;
   color: var(--muted);
   border: 1px solid transparent;
-  transition: .15s;         /* smooth hover */
+  transition: .15s;
 }
 
+  /* smooth hover */
 .nav-links a:hover {
   background: var(--card);
   border-color: var(--border);
@@ -136,60 +147,32 @@ header.site {
   font-weight: 800;
 }
 
-/* --------------------------------------------------------------------------
-   4. Hero section (big intro on index.html)
-   -------------------------------------------------------------------------- */
-.hero {
-  padding: 48px 0 16px;
+/* --------  4. about section (big intro on index.html)   --------*/
+.about {
+  padding: 48px 0 0;
 }
-.hero-row {
+
+.about-row {
   display: flex;
   gap: 24px;
   align-items: flex-start;
 }
 
-.hero-text {
+.about-text {
   flex: 1;
   min-width: 0;
 }
 
 @media (max-width: 640px) {
-  .hero-row {
+  .about-row {
     flex-direction: column-reverse;
     align-items: flex-start;
   }
 }
 
-
-
-/* Small uppercase label above the heading */
-.eyebrow {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-size: .76rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--accent);
-  background: var(--accent-bg);
-  border: 1px solid rgba(189,147,249,.35);
-  padding: 5px 10px;
-  border-radius: 999px;
-  margin-bottom: 2px;
-}
-
-.eyebrow::before {
-  content: "";
-  width: 6px;
-  height: 6px;
-  border-radius: 50%;
-  background: var(--accent);
-  opacity: .9;
-}
-
-.hero h1 {
-  font-size: clamp(1.9rem, 4vw, 2.45rem); /* fluid size: small screen -> large */
+.about h1 {
+  font-size: clamp(1.9rem, 4vw, 2.45rem);
+  /* fluid size: small screen -> large */
   line-height: 1.1;
   margin: 0 0 10px;
   letter-spacing: -0.03em;
@@ -197,20 +180,21 @@ header.site {
   max-width: 18ch;
 }
 
-.hero p.lead {
+.about p.lead {
   font-size: 1.08rem;
-  line-height: 1.6;
+  line-height: 1.4;
   color: var(--fg);
   margin: 0 0 18px;
   max-width: 62ch;
 }
 
 .meta {
-  color: var(--muted);
-  font-size: .92rem;
+  color: var(--accent);
+  font-size: 1.25rem;
+  font-weight: 600;
 }
 
-/* Row of small contact pills under the hero */
+/* Row of small contact pills under the about */
 .pill-row {
   display: flex;
   flex-wrap: wrap;
@@ -221,13 +205,12 @@ header.site {
 .pill {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
-  font-size: .88rem;
+  gap: 2px;
+  font-size: .95rem;
   color: var(--accent);
   background: var(--card);
-  border: 1px solid var(--border);
-  padding: 6px 11px;
-  border-radius: 8px;
+  padding: 2px 8px;
+  border-radius: 6px;
   transition: .15s;
 }
 
@@ -236,75 +219,25 @@ header.site {
   font-weight: 500;
 }
 
-.pill:hover {
-  border-color: var(--border-strong);
-  box-shadow: 0 1px 2px rgba(0,0,0,.3);
-}
-
 .pill i {
   color: var(--muted-2);
-  font-size: .86em;
-}
-
-/* Primary / secondary call-to-action buttons */
-.cta-row {
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin: 18px 0 4px;
-}
-
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 16px;
-  border-radius: 999px;
-  border: 1px solid var(--accent);
-  background: var(--accent);
-  color: var(--bg);
-  font-weight: 600;
-  font-size: .93rem;
-  transition: .15s;
-  box-shadow: 0 1px 2px rgba(0,0,0,.3);
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 24px rgba(0,0,0,.35);
-  text-decoration: none;
-  background: #caa9fa;
-  border-color: #caa9fa;
-}
-
-.btn.secondary {
-  background: var(--card);
-  color: var(--fg);
-  border-color: var(--border-strong);
-}
-
-.btn.secondary:hover {
-  background: var(--card);
-  border-color: var(--fg);
 }
 
 /* Section headings (e.g. "Projects", "Experience") */
 h2 {
-  font-size: 1.52rem;
+  font-size: 1.5rem;
   font-weight: 650;
-  text-transform: uppercase;
-  color: var(--fg);
-  margin: 0px 0px -2px;
+  color: var(--accent);
+  margin: 0px 0px -6px;
 }
 
 h3 {
-  font-size: .82rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
+  font-size: 1.2rem;
+  font-weight: 500;
+  letter-spacing: .04em;
   color: var(--muted);
-  margin: 36px 0 14px;
-  padding-bottom: 8px;
+  margin: 36px 0 10px;
+  padding-bottom: 0px;
   border-bottom: 1px solid var(--border);
 }
 
@@ -314,9 +247,7 @@ h3 {
   margin: 0 0 12px;
 }
 
-/* --------------------------------------------------------------------------
-   5. Cards & repo list (used on index.html)
-   -------------------------------------------------------------------------- */
+/* --------  5. Cards & repo list (used on index.html)   --------*/
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -325,20 +256,24 @@ h3 {
 
 @media (min-width: 720px) {
   .grid.cols2 {
-    grid-template-columns: 1fr 1fr; /* two columns on tablets+ */
+    grid-template-columns: 1fr 1fr;
   }
 }
 
-.card {
+    /* two columns on tablets+ */
+.card, .repo {
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 18px;
   background: var(--card);
   box-shadow: var(--shadow);
   transition: .18s;
 }
 
-.card:hover {
+.card {
+  padding: 18px;
+}
+
+.card:hover, .repo:hover {
   box-shadow: var(--shadow-hover);
   transform: translateY(-1px);
   border-color: var(--border-strong);
@@ -373,12 +308,7 @@ h3 {
 }
 
 .repo {
-  border: 1px solid var(--border);
-  border-radius: 14px;
   padding: 16px;
-  background: var(--card);
-  box-shadow: var(--shadow);
-  transition: .18s;
   position: relative;
   overflow: hidden;
 }
@@ -387,17 +317,13 @@ h3 {
 .repo::before {
   content: "";
   position: absolute;
-  left: 0; top: 0; bottom: 0;
+  left: 0;
+  top: 0;
+  bottom: 0;
   width: 3px;
   background: var(--accent);
   opacity: 0;
   transition: .18s;
-}
-
-.repo:hover {
-  box-shadow: var(--shadow-hover);
-  transform: translateY(-1px);
-  border-color: var(--border-strong);
 }
 
 .repo:hover::before {
@@ -418,7 +344,7 @@ h3 {
   color: var(--muted);
   font-size: .9rem;
   margin: 6px 0 0;
-  line-height: 1.5;
+  line-height: 1.15;
 }
 
 .repo .meta {
@@ -431,14 +357,10 @@ h3 {
   align-items: center;
 }
 
-/* --------------------------------------------------------------------------
-   6. CV header & toolbar (used on cv.html)
-   -------------------------------------------------------------------------- */
+/* --------  6. CV header & toolbar (used on cv.html)   --------*/
 .cv-header {
-  padding: 32px 0 8px;
-  border-bottom: 1px solid var(--border);
+  padding: 32px 0 18px;
   margin-bottom: 10px;
-  padding-bottom: 18px;
 }
 
 .cv-header h1 {
@@ -449,33 +371,21 @@ h3 {
   line-height: 1.1;
 }
 
-.cv-header .subtitle {
-  color: var(--muted);
-  margin: 6px 0 0;
-  font-size: .98rem;
-  font-weight: 500;
-}
-
-/* Contact pills inside the CV header — single row, scrolls if needed */
+/* Contact pills inside the CV header  single row, scrolls if needed */
 .cv-contact {
   display: flex;
   flex-wrap: wrap;
   gap: 6px;
-  margin: 0 0 18px;
+  margin: 0 0;
   font-size: .78rem;
-  padding-bottom: 2px;
 }
 
 .cv-contact .pill {
-  font-size: .76rem;
-  padding: 2px 6px;
+  font-size: .87rem;
+  padding: 0px 2px;
   gap: 3px;
   white-space: nowrap;
   flex: 0 0 auto;
-}
-
-.cv-contact .pill i {
-  font-size: .95em;
 }
 
 /* Expand / Collapse buttons above the CV sections */
@@ -487,7 +397,7 @@ h3 {
   margin: 18px 0 14px;
 }
 
-.toolbar button {
+.toolbar button, .toolbar a {
   display: inline-flex;
   align-items: center;
   gap: 7px;
@@ -504,109 +414,111 @@ h3 {
   transition: .15s;
 }
 
-.toolbar button:hover {
+.toolbar button:hover, .toolbar a:hover {
   background: #caa9fa;
   color: var(--bg);
   border-color: #caa9fa;
   transform: translateY(-1px);
+  text-decoration: none;
 }
 
-/* --------------------------------------------------------------------------
-   7. <details> accordion — native HTML, no JS library needed
-   -------------------------------------------------------------------------- */
-details {
-  border: 1px solid var(--border);
+/* --------  7. Detail pop-ups  native <dialog>, no JS library needed   --------*/
+dialog.modal {
+  width: min(640px, 92vw);
+  max-height: min(80vh, 640px);
+  padding: 0;
+  border: 1px solid var(--border-strong);
   border-radius: 12px;
   background: var(--card);
-  margin: 10px 0;
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: .15s;
+  color: var(--fg);
+  box-shadow: 0 18px 50px rgba(0,0,0,.45);
 }
 
-details:hover {
-  border-color: var(--border-strong);
+dialog.modal::backdrop {
+  background: rgba(0,0,0,.55);
+  backdrop-filter: blur(2px);
 }
 
-details[open] {
-  border-color: var(--border-strong);
-  box-shadow: var(--shadow-hover);
+/* Padding + scroll live here so backdrop clicks still hit the dialog itself */
+.modal-body {
+  padding: 18px 20px 20px;
+  max-height: min(80vh, 640px);
+  overflow: auto;
 }
 
-details[open] summary {
-  background: var(--bg);
+.modal-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+  padding-bottom: 8px;
   border-bottom: 1px solid var(--border);
 }
 
-summary {
-  list-style: none;
-  cursor: pointer;
-  padding: 14px 16px;
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  align-items: center;
-  font-weight: 650;
-  user-select: none;
+.modal-head h3 {
+  margin: 0;
+  font-size: 1rem;
+  font-weight: 700;
+  line-height: 1.3;
+  border: 0;
+  padding: 0;
+  letter-spacing: -0.01em;
+  color: var(--fg);
 }
 
-summary::-webkit-details-marker {
-  display: none; /* hide default triangle */
-}
-
-/* Custom +/- circle on the right side of each summary */
-summary::after {
-  content: "+";
+.modal-close {
+  margin-left: auto;
+  flex: 0 0 auto;
+  width: 28px;
+  height: 28px;
   display: grid;
   place-items: center;
-  width: 26px;
-  height: 26px;
-  border-radius: 50%;
+  border-radius: 8px;
   border: 1px solid var(--border);
-  background: var(--card);
-  color: var(--muted);
-  font-weight: 400;
-  font-size: 1.05rem;
-  line-height: 1;
-  flex: 0 0 auto;
-  transition: .15s;
-}
-
-details[open] summary::after {
-  content: "-";
-  background: var(--accent);
-  color: var(--bg);
-  border-color: var(--accent);
-}
-
-.sum-left {
-  flex: 1;
-  font-size: .96rem;
-  letter-spacing: -0.01em;
-}
-
-.sum-right {
-  color: var(--muted);
-  font-weight: 500;
-  font-size: .84rem;
-  white-space: nowrap;
   background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 4px 9px;
-  border-radius: 999px;
+  color: var(--muted);
+  font: inherit;
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
 }
 
-@media (max-width: 640px) {
-  summary { flex-wrap: wrap; }
-  .sum-right { white-space: normal; }
+.modal-close:hover {
+  border-color: var(--border-strong);
+  color: var(--fg);
+}
+
+/* Invisible button stretched over a CV entry: clicking anywhere in the entry
+   opens its pop-up, while the button keeps keyboard focus and a11y semantics. */
+.cv-entry-hit {
+  position: absolute;
+  inset: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  cursor: pointer;
+}
+
+.cv-entry-hit:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: -2px;
+  border-radius: 8px;
+}
+
+.cv-entry-title {
+  flex: 2px 2px auto;
+  padding-left: 4px;
+  min-width: 0;
+  font-size: 1.0rem;
+  letter-spacing: -0.01em;
+  font-weight: 750;
 }
 
 .details-body {
-  padding: 14px 16px 16px;
-  background: var(--card);
   color: var(--fg);
   font-size: .94rem;
-  line-height: 1.6;
+  line-height: 1.15;
 }
 
 .details-body p {
@@ -619,48 +531,57 @@ details[open] summary::after {
   font-weight: 600;
 }
 
-.badge {
-  display: inline-flex;
-  align-items: center;
-  font-size: .74rem;
-  font-weight: 700;
-  letter-spacing: .04em;
-  text-transform: uppercase;
-  padding: 4px 9px;
-  border-radius: 999px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-  color: var(--muted);
-}
-
-/* --------------------------------------------------------------------------
-   8. CV paper — the bordered "sheet" with two-column layout
-   -------------------------------------------------------------------------- */
+/* --------  8. CV paper  the bordered "sheet" with two-column layout   --------*/
+/* Traditional CV palette (dark ink on white) so the on-screen sheet matches the   printed page. Overriding the tokens here re-themes every child rule that uses   var(--); the Dracula palette stays in effect everywhere outside the sheet. */
 .cv-paper {
+  --cv-pad: 1cm;
+  /* sheet padding; the left-margin hint is placed relative to it */
+  --fg: #1b1f23;
+  /* CV body text */
+  --muted: #59636e;
+  /* dates, previews, captions */
+  --muted-2: var(--accent);
+  /* icons */
+  --accent: #2f6b4f;
+  /* muted dark green  links + timeline */
+  --accent-bg: rgba(47, 107, 79, .1);
+  --border: #d5d9de;
+  --border-strong: #9aa4ad;
+  --bg: #f3f4f6;
+  /* inset surfaces: chips, open summary */
+  --card: #ffffff;
+  /* the sheet itself */
+  --shadow: 0 1px 2px rgba(20, 30, 25, .07);
+  --shadow-hover: 0 3px 10px rgba(20, 30, 25, .12);
+  color: var(--fg);
   background: var(--card);
   border: 1px solid var(--border-strong);
-  border-radius: 16px;
-  padding: 28px;
-  box-shadow: 0 1px 3px rgba(0,0,0,.3), 0 12px 40px rgba(0,0,0,.5), 0 0 0 1px rgba(0,0,0,.2);
+  border-radius: 0;
+  width: 210mm;
+  /* A4 wide, shrinks to fit on narrow screens */
+  min-height: 297mm;
+  /* A4 tall: the sheet always fills a page, and grows if the content needs more */
+  max-width: 100%;
+  padding: var(--cv-pad);
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
   position: relative;
-  overflow: hidden;
-  outline: 1px solid rgba(0,0,0,.2);
-  outline-offset: 2px;
 }
 
-@media (min-width: 720px) {
-  .cv-paper { padding: 36px 40px; }
+/* Let the column holding the sheet grow to A4 + gutters (falls back to --max).
+   The gutters also leave room for the margin hint beside the sheet. */
+main.wrap:has(> .cv-paper) {
+  max-width: calc(210mm + 48px);
 }
 
+/* Banner: picture on the right, name + title + pills centred against it */
 .cv-paper .cv-header {
   display: flex;
-  gap: 10px;
+  gap: 14px;
   align-items: center;
-  justify-content: space-between;
-  margin_top: 0;
-  padding-bottom: 0px;
-  margin-bottom: 0px;
-  margin_top: 0px;
+  padding: 0 0 6px;
+  /* the sheet's 1cm padding is the only top/side margin */
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
 }
 
 .cv-header-main {
@@ -669,40 +590,41 @@ details[open] summary::after {
 }
 
 .cv-avatar {
-  width: 96px;
-  height: 96px;
+  width: 110px;
+  height: 90px;
   border-radius: 8px;
-  object-fit: cover;            /* crop image to circle without distortion */
-  border: 2px solid var(--border-strong);
+  object-fit: cover;
+  /* crop image to circle without distortion */
+  border: 1px solid var(--fg);
   background: var(--border);
-  flex: 0 0 auto;
 }
 
 @media (max-width: 640px) {
   .cv-paper .cv-header {
-    flex-direction: column-reverse; /* avatar on top on small screens */
+    flex-direction: column-reverse;
+    /* picture on top, text below on small screens */
     align-items: flex-start;
   }
-  .cv-avatar { width: 80px; height: 80px; }
+  .cv-avatar {
+    width: 80px;
+    height: 80px;
+  }
+  /* Too narrow for chips beside the title  stack them instead of overflowing */
+  .cv-entry-top, .cv-chips {
+    flex-wrap: wrap;
+  }
 }
 
 .cv-paper .cv-header h1 {
-  font-family: Georgia, 'Source Serif 4', serif; /* serif for CV name only */
+  font-family: Georgia, 'Source Serif 4', serif;
+  /* serif for CV name only */
   letter-spacing: -0.03em;
-}
-
-.cv-kicker {
-  font-size: .76rem;
-  font-weight: 700;
-  letter-spacing: .08em;
-  text-transform: uppercase;
-  color: var(--accent);
 }
 
 /* Two-column layout: main content + sidebar */
 .cv-layout {
   display: grid;
-  gap: 28px;
+  gap: 6px;
 }
 
 @media (min-width: 860px) {
@@ -711,171 +633,167 @@ details[open] summary::after {
   }
 }
 
-.cv-main h2,
-.cv-side h2 {
+.cv-main h2,.cv-side h2 {
   margin-top: 0;
 }
 
-/* Timeline look for the left column: vertical line + dots */
-.cv-main details {
-  border: none;
-  border-left: 2px solid var(--border);
-  border-radius: 0;
-  box-shadow: none;
+/* Second and later sections in a column need air above them */
+.cv-block + .cv-block {
+  margin-top: 20px;
+}
+
+/* Entry list used by Experience and Notable Projects: vertical line + one dot
+   per entry. Each entry is title + subtitle + chips on one row, preview below. */
+.cv-list {
+  list-style: none;
   margin: 0;
-  background: transparent;
-  position: relative;           /* for the dot pseudo-element */
+  padding: 0;
+  border-left: 2px solid var(--accent);
 }
 
-.cv-main details + details {
-  margin-top: 0;
+.cv-list-item {
+  position: relative;
+  /* for the dot pseudo-element and the click target */
+  padding: 4px 8px;
+  /* ~4px between entries */
 }
 
-.cv-main details:hover {
-  border-left-color: var(--border-strong);
+/* Only entries that open a pop-up look clickable */
+.cv-list-item:has(.cv-entry-hit) {
+  cursor: pointer;
 }
 
-.cv-main details[open] {
-  border-left-color: var(--accent);
-  box-shadow: none;
-  background: transparent;
-}
-
-.cv-main details[open] summary {
+.cv-list-item:has(.cv-entry-hit):hover {
   background: var(--bg);
 }
 
-.cv-main summary {
-  padding-left: 18px;
-  display: flex;
-  align-items: flex-start;
+/* Bar variant (Notable Projects, like Education): no shared line and no dots —
+   every entry gets its own accent bar. Text formatting is unchanged. */
+.cv-list--bars {
+  border-left: 0;
+  display: grid;
   gap: 12px;
 }
 
-.cv-main summary::after {
-  margin-top: 2px;
+.cv-list--bars .cv-list-item {
+  padding: 0 0 0 10px;
+  border-left: 2px solid var(--accent);
 }
 
-.cv-entry {
-  flex: 1;
-  min-width: 0;
+.cv-list--bars .cv-list-item::before {
+  content: none;
+}
+
+/* Margin note for the pop-ups: sits in the left margin, top-aligned with the
+   Experience heading, so nothing interactive is left inside the printable paper. */
+.cv-hint {
+  position: absolute;
+  top: 0;
+  right: calc(100% + var(--cv-pad) + 8px);
+  margin: 0;
+  writing-mode: vertical-rl;
+  /* stacked letters, no rotation maths needed ... */
+  transform: rotate(180deg);
+  /* ... then turned so it reads bottom-to-top */
+  white-space: nowrap;
+  font-size: .72rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #6272a4;
+  /* page palette: the hint sits outside the sheet, on the dark background */
+}
+
+/* The hint is positioned against this section, not the sheet */
+.cv-experience {
+  position: relative;
+}
+
+/* No room beside the sheet: drop the hint, the entries still show a hover tint */
+@media (max-width: 959px) {
+  .cv-hint {
+    display: none;
+  }
 }
 
 .cv-entry-top {
   display: flex;
-  flex-wrap: wrap;
-  gap: 6px 10px;
+  flex-wrap: nowrap;
+  gap: 4px 4px;
   align-items: center;
 }
 
 .cv-chips {
   display: inline-flex;
-  gap: 6px;
-  flex-wrap: wrap;
+  gap: 2px;
+  flex-wrap: nowrap;
+  flex: 0 0 auto;
   align-items: center;
   margin-left: auto;
+}
+
+/* Subtitle beside an entry title: where / with whom  muted, like the header */
+.cv-entry-sub {
+  color: var(--muted);
+  font-weight: 500;
 }
 
 .chip {
   display: inline-flex;
   align-items: center;
-  gap: 4px;
-  font-size: .72rem;
-  font-weight: 600;
+  font-size: .79rem;
+  font-weight: 650;
   color: var(--muted);
-  background: var(--bg);
-  border: 1px solid var(--border);
-  padding: 3px 7px;
-  border-radius: 999px;
   white-space: nowrap;
 }
 
 .chip i {
-  font-size: .78em;
   color: var(--muted-2);
 }
 
-.chip--end { background: var(--card); }
-.chip--loc { background: var(--card); }
-
-/* Short preview text shown when the <details> is collapsed (2-line clamp) */
-.cv-preview {
-  margin: 6px 0 0;
-  font-size: .86rem;
-  color: var(--muted);
+/* Short preview text under a CV entry (4-line clamp, pop-up has the full text) */
+.cv-entry-preview {
+  margin: 0px 4px 0px;
+  font-size: 0.94rem;
+  color: var(--fg);
   font-weight: 400;
-  line-height: 1.45;
+  line-height: 1.4;
   display: -webkit-box;
-  -webkit-line-clamp: 2;        /* show max 2 lines, then "..." */
+  -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
   overflow: hidden;
 }
 
 .cv-intro {
   background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 12px;
-  padding: 16px 18px;
-  margin: 0 0 18px;
+  margin: 0 0 6px;
   color: var(--fg);
   font-size: .94rem;
-  line-height: 1.6;
-  box-shadow: var(--shadow);
+  line-height: 1.4;
 }
 
-.cv-intro p { margin: 0; }
-
-.cv-bullets {
-  margin: 12px 0 0;
-  padding-left: 18px;
-  color: var(--fg);
+.cv-intro p {
+  margin: 0.2em 0;
 }
 
-.cv-bullets li { margin: 6px 0; }
-
-.cv-media {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 10px;
-  margin-top: 14px;
-}
-
-.cv-media img {
-  width: 100%;
-  height: auto;
-  border-radius: 10px;
-  border: 1px solid var(--border);
-  background: var(--bg);
-}
-
-.cv-media figcaption {
-  font-size: .78rem;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-/* Timeline dot on the left border */
-.cv-main details::before {
+/* Dot on the list line, one per entry */
+.cv-list-item::before {
   content: "";
   position: absolute;
-  left: -7px;
-  top: 18px;
+  left: -9px;
+  top: 9px;
+  /* dot centred on the title / subtitle / chips row */
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: var(--border-strong);
   border: 2px solid var(--card);
-  box-shadow: 0 0 0 1px var(--border);
+  box-shadow: 0 0 0 2px var(--border);
 }
 
-.cv-main details[open]::before {
+/* First entry is the current role / newest project  filled dot marks "now" */
+.cv-list-item:first-child::before {
   background: var(--accent);
   box-shadow: 0 0 0 1px var(--accent);
-}
-
-.cv-main .details-body {
-  padding-left: 18px;
-  background: transparent;
 }
 
 /* Right sidebar (skills, education) */
@@ -893,67 +811,90 @@ details[open] summary::after {
   }
 }
 
-.cv-side h2 { font-size: .78rem; }
+.cv-side h2 {
+  font-size: .98rem;
+}
 
-.skill-group { margin: 0 0 16px; }
+.skill-group {
+  padding: 0 0 10px;
+  margin: 0 0 10px;
+  border-bottom: 1px solid var(--border);
+}
 
 .skill-label {
-  font-size: .72rem;
+  font-size: .88rem;
   font-weight: 700;
-  letter-spacing: .06em;
+  letter-spacing: .02em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 0 8px;
+  margin: 0 4px 2px;
 }
 
 .skill-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
+  gap: 2px;
 }
 
 .skill-pills span {
   font-size: .8rem;
   background: var(--bg);
   border: 1px solid var(--border);
-  padding: 5px 9px;
-  border-radius: 999px;
+  padding: 0px 6px;
+  border-radius: 8px;
   color: var(--muted);
   position: relative;
 }
 
-.edu-item {
-  display: flex;
-  gap: 10px;
-  margin: 0 0 14px;
-}
-
-.edu-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
+/* Compact education list: degree + years on one row, one telling line below */
+.edu-list {
+  list-style: none;
+  padding: 0 0 4px;
+  margin: 0 0 4px;
   display: grid;
-  place-items: center;
-  background: var(--accent-bg);
-  border: 1px solid rgba(189,147,249,.35);
-  color: var(--accent);
-  flex: 0 0 auto;
+  gap: 12px;
+  border-bottom: 1px solid var(--border);
 }
 
-.edu-item strong {
-  display: block;
-  font-size: .9rem;
+.edu-list li {
+  border-left: 2px solid var(--accent);
+  padding-left: 10px;
+}
+
+.edu-top {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+}
+
+.edu-top strong {
+  font-size: .86rem;
   line-height: 1.2;
 }
 
-.edu-item span {
-  font-size: .84rem;
-  color: var(--muted);
+.edu-top .chip {
+  margin-left: auto;
+  font-size: .76rem;
 }
 
-/* --------------------------------------------------------------------------
-   9. Footer
-   -------------------------------------------------------------------------- */
+.edu-what {
+  margin: 0;
+  font-size: .8rem;
+  color: var(--fg);
+}
+
+.edu-detail {
+  margin: 1px 0 0;
+  font-size: .76rem;
+  color: var(--muted);
+  line-height: 1.35;
+}
+
+.edu-detail em {
+  font-style: italic;
+}
+
+/* --------  9. Footer   --------*/
 footer {
   border-top: 1px solid var(--border);
   margin-top: 40px;
@@ -972,18 +913,7 @@ footer a:hover {
   color: var(--fg);
 }
 
-/* --------------------------------------------------------------------------
-   9.5 GitHub contribution calendar (index.html) — commit grid, Dracula green
-   -------------------------------------------------------------------------- */
-.cal {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  padding: 18px;
-  box-shadow: var(--shadow);
-  overflow-x: auto;
-}
-
+/* --------  9.5 GitHub contribution calendar (index.html)  commit grid, Dracula green   --------*/
 .cal-summary {
   font-size: .92rem;
   font-weight: 700;
@@ -991,7 +921,9 @@ footer a:hover {
   margin: 0 0 14px;
 }
 
-.cal-scroll { min-width: 800px; }
+.cal-scroll {
+  min-width: 800px;
+}
 
 .cal-months {
   display: grid;
@@ -1031,10 +963,21 @@ footer a:hover {
   background: var(--bg);
 }
 
-.cal-cell.lvl-1 { background: rgba(80, 250, 123, .22); }
-.cal-cell.lvl-2 { background: rgba(80, 250, 123, .45); }
-.cal-cell.lvl-3 { background: rgba(80, 250, 123, .72); }
-.cal-cell.lvl-4 { background: #50fa7b; }
+.cal-cell.lvl-1 {
+  background: rgba(80, 250, 123, .22);
+}
+
+.cal-cell.lvl-2 {
+  background: rgba(80, 250, 123, .45);
+}
+
+.cal-cell.lvl-3 {
+  background: rgba(80, 250, 123, .72);
+}
+
+.cal-cell.lvl-4 {
+  background: #50fa7b;
+}
 
 .cal-legend {
   display: flex;
@@ -1046,111 +989,135 @@ footer a:hover {
   color: var(--muted);
 }
 
-/* --------------------------------------------------------------------------
-   10. Print overrides — CV must fit on one page when printed / saved as PDF
-   -------------------------------------------------------------------------- */
+/* --------  10. Print overrides  identical to the screen, minus the interactivity   --------*/
 @media print {
-  @page { margin: 12mm; }
-
+  @page {
+    size: A4;
+    margin: 1cm;
+  }
   /* Hide chrome that is useless on paper */
-  header.site,
-  .toolbar,
-  .no-print,
-  footer {
+  header.site, .toolbar, .no-print, footer {
     display: none !important;
   }
-
   body {
-    font-size: 10pt;
-    line-height: 1.35;
     background: #fff;
   }
-
-  .wrap {
+  .wrap, main.wrap:has(> .cv-paper) {
     max-width: none;
     padding: 0;
   }
-
-  .hero,
-  .cv-header {
+  .about {
     padding: 0;
     border: none;
   }
-
-  /* Remove card chrome on paper */
+  /* Drop the screen shadow, keep everything else: paper IS the sheet */
   .cv-paper {
-    border: none !important;
     box-shadow: none !important;
+    border: 0 !important;
     outline: none !important;
-    padding: 0;
     border-radius: 0;
+    background: #fff;
+    /* the sheet edge is a screen affordance: on paper @page margin is the edge */
+    width: auto;
+    min-height: auto;
+    /* the A4 floor is a screen thing: on paper the page itself is the A4 */
+    /* @page margin replaces the sheet's own 1cm padding */
+    padding: 0;
   }
-
-  .cv-layout { display: block; }
-
-  .cv-main details {
-    border: none;
-    border-bottom: 1px solid #ddd;
-    border-left: none;
+  /* Keep the two columns on paper — the printable width is narrower than the
+     860px breakpoint, so the wide layout has to be restated here. */
+  .cv-layout {
+    grid-template-columns: minmax(0, 1.75fr) minmax(180px, .85fr);
   }
-
-  .cv-main details::before { display: none; }
-
   .cv-side {
-    border: none;
-    padding: 0;
-    margin-top: 8px;
+    border-left: 1px solid var(--border);
+    border-top: 0;
+    padding: 0 0 0 10px;
+    margin-top: 0;
   }
-
-  .cv-avatar { border-color: #ddd; }
-
-  .cv-preview {
-    -webkit-line-clamp: unset;
-    display: block;
+  /* Fit-to-one-page: screen type/spacing slightly overflows A4, so tighten
+     print-only type, gaps and margins until the sheet is exactly 1 page.
+     Root font-size (not body): nearly all type is rem-sized. */
+  html {
+    font-size: 13px;
   }
-
-  .chip {
-    border: none;
-    background: none;
-    padding: 0;
-    font-size: 8pt;
+  body {
+    line-height: 1.35;
   }
-
-  .cv-intro {
-    border: none;
-    box-shadow: none;
-    padding: 0;
+  .cv-paper .cv-header h1 {
+    font-size: 1.5rem;
   }
-
-  .card, .repo, details {
-    box-shadow: none;
-    border: 1px solid #ddd;
+  .cv-entry-preview, .cv-intro {
+    font-size: .82rem;
+    line-height: 1.3;
   }
-
-  details {
-    border: none;
-    border-bottom: 1px solid #ddd;
-    border-radius: 0;
-    margin: 4px 0;
-    box-shadow: none;
+  .cv-block + .cv-block {
+    margin-top: 10px;
   }
-
-  summary { padding: 6px 0; }
-
-  summary::after,
-  .sum-right {
-    border: none;
-    background: none;
-    padding: 0;
+  .edu-list, .cv-list--bars {
+    gap: 6px;
   }
-
-  /* Always collapse details on paper — JS also collapses before print */
-  .details-body { display: none !important; }
-
-  a { color: inherit; text-decoration: none; }
-
-  /* Show URLs in print so paper readers can still find links */
-  a[href^="http"]::after {
+  .cv-avatar {
+    width: 80px;
+    height: 70px;
+  }
+  h3 {
+    margin: 18px 0 8px;
+  }
+  /* Title rows are nowrap on screen; let them wrap on the narrow page. */
+  .cv-entry-top, .cv-chips {
+    flex-wrap: wrap;
+  }
+  /* Pop-ups are on-screen only: paper keeps the one-page summary */
+  dialog.modal, .cv-entry-hit {
+    display: none !important;
+  }
+  /* Timeline dots are background-painted on screen, which printers drop
+     with "Background graphics" off. Keep them filled via exact color
+     adjust, with the ring as a real border (borders always print). */
+  .cv-list-item::before {
+    background: var(--border-strong) !important;
+    border: 2px solid var(--border) !important;
+    box-shadow: none !important;
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .cv-list-item:first-child::before {
+    background: var(--accent) !important;
+    border-color: var(--accent) !important;
+  }
+  /* The dot straddles the ul border line (left: -9px), which slices it
+     into half-circles in some PDF pipelines. Redraw line + dots fully
+     inside each item instead: per-item line segment, dot seated in padding. */
+  .cv-list:not(.cv-list--bars) {
+    border-left: 0;
+  }
+  .cv-list:not(.cv-list--bars) .cv-list-item {
+    padding-left: 20px;
+  }
+  .cv-list:not(.cv-list--bars) .cv-list-item::before {
+    left: 0;
+  }
+  .cv-list:not(.cv-list--bars) .cv-list-item::after {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--accent);
+    print-color-adjust: exact;
+    -webkit-print-color-adjust: exact;
+  }
+  .cv-list:not(.cv-list--bars) .cv-list-item:first-child::after {
+    top: 15px;
+  }
+  .cv-list:not(.cv-list--bars) .cv-list-item:last-child::after {
+    bottom: auto;
+    height: 15px;
+  }
+  /* Show the target of thesis links. Contact links are left alone — the URL is in the text. */
+  .edu-detail a::after {
     content: " (" attr(href) ")";
     font-size: 8pt;
     color: #666;

@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>ASJ - About</title>
 <meta name="description" content="Anders Skaarup Johansen · Postdoc at Aalborg University, computer vision and responsible AI.">
+<link rel="icon" type="image/png" href="assets/img/frog-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@7.4.47/css/materialdesignicons.min.css">
 <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 <header class="site">
   <div class="wrap nav">
-    <a class="brand" href="index.html"><span class="brand-mark">ASJ</span> About Me </small></a>
+    <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/img/frog-icon.png" alt="Frog logo" width="32" height="32"></span> About Me </small></a>
     <nav class="nav-links" aria-label="Primary">
       <a href="index.html" aria-current="page">About</a>
       <a href="cv.html">CV</a>
@@ -22,16 +22,15 @@
 </header>
 
 <main class="wrap">
-  <section class="hero">
+  <section class="about">
     <h1>Who am i?</h1>
-    <div class="hero-row">
+    <div class="about-row">
       <img class="cv-avatar" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" loading="lazy" style="width:150px;height:150px" onerror="this.style.display='none'">
-      <div class="hero-text">
+      <div class="about-text">
         <h2>Anders Skaarup Johansen</h2>
         <p class="lead">I am a computer-vision researcher and hobbyist tinkerer, with a focus on how state-of-the-art computer vision performs outside the lab. With a growing interest in high-performing systems that aim to maintain alignment with human values and while solving real-world problems.</p>
       </div>
     </div>
-    <div> I'm currently a Postdoc at Aalborg University and the national Center for AI in Society.</div>  
     <div class="pill-row">
       <span class="pill"><i class="fab fa-github"></i> <a href="https://github.com/OldManAnders">/OldManAnders</a></span>
       <span class="pill"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
@@ -53,19 +52,19 @@
   </div>
   <div class="grid cols2" style="margin-top:16px">
       <div class="card">
-      <h3><i class="mdi mdi-clipboard-edit" style="color:var(--accent)"></i> Standardization</h3>
+      <h3><i class="fas fa-clipboard-list" style="color:var(--accent)"></i> Standardization</h3>
       <p>National Expert at Dansk Standard (S-855) & CEN/CENELEC JTC21, working on evaluation of computer-vision systems to support the AI-Act. Ensuring accurate assessment of system performance.</p>
     </div>
     <div class="card">
-      <h3><i class="mdi mdi-printer-3d-nozzle" style="color:var(--accent)"></i> 3D Printing</h3>
+      <h3><i class="fas fa-cube" style="color:var(--accent)"></i> 3D Printing</h3>
       <p>Designing and building 3D printed structures for various applications. Currently i am in my 'Functional Print'-phase, where i focus on printing functional parts for my homelab.
       </p>
     </div>
   </div>
 
   <h3>GitHub Activity</h3>
-  <p id="gh-updated" class="meta"></p>
   <div id="contributions"></div>
+  <div id="gh-updated" class="repo-summary"></div>
 
   <h3>Most active repos this month</h3>
   <p id="repos-summary" class="repo-summary"></p>
@@ -73,8 +72,7 @@
 
 </main>
 
-<footer><div class="wrap">© <span id="y"></span> Anders Skaarup Johansen - Get in touch: <i class="fas fa-envelope"></i> <a href="mailto:asj@vornet.dk">asjo@create.aau.dk</a> or <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></div></footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
+<footer><div class="wrap">© <span id="y"></span> Anders Skaarup Johansen - Get in touch: <i class="fas fa-envelope"></i> <a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a> or <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></div></footer>
 <script src="assets/js/main.js"></script>
 </body>
 </html>

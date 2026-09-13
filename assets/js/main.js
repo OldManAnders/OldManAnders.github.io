@@ -1,56 +1,32 @@
 ﻿
 (function () {
+  const y = document.getElementById("y");
+  if (y) y.textContent = new Date().getFullYear();
+
   // --- Tiny DOM helpers ---
-  // $  -> returns the first element matching a CSS selector (like "#repos" or "details")
+  // $  -> returns the first element matching a CSS selector (like "#repos")
   // $$ -> returns an array of all matching elements
   const $ = (selector, root = document) => root.querySelector(selector);
   const $$ = (selector, root = document) => [...root.querySelectorAll(selector)];
 
   // -------------------------------------------------------------------------
-  // 1. Expand / Collapse all — only present on cv.html
+  // 1. Detail pop-ups — only present on cv.html.
   // -------------------------------------------------------------------------
-  // Helper that grabs every <details> element on the page
-  const allDetails = () => $$("details");
-
-  // Buttons are optional — index.html does not have them, so we guard with if()
-  const expandBtn = $("#expand-all");
-  const collapseBtn = $("#collapse-all");
-
-  if (expandBtn) {
-    expandBtn.addEventListener("click", () => {
-      // Setting .open = true expands the <details> natively (no CSS needed)
-      allDetails().forEach((d) => (d.open = true));
-    });
-  }
-
-  if (collapseBtn) {
-    collapseBtn.addEventListener("click", () => {
-      allDetails().forEach((d) => (d.open = false));
-    });
-  }
-
-  // -------------------------------------------------------------------------
-  // 2. Print handling — keep printed CV to 1 page (collapsed)
-  // -------------------------------------------------------------------------
-  // We save which sections were open so we can restore them after printing.
-  // beforeprint collapses all; afterprint re-opens what was open before.
-  let savedState = null;
-
-  window.addEventListener("beforeprint", () => {
-    // Snapshot: [true, false, true, ...] for each <details>
-    savedState = allDetails().map((d) => d.open);
-    allDetails().forEach((d) => (d.open = false));
+  // Native <dialog>: Esc-to-close, focus trap and focus restore come free.
+  $$("[data-modal]").forEach((btn) => {
+    const dlg = document.getElementById(btn.dataset.modal);
+    if (dlg) btn.addEventListener("click", () => dlg.showModal());
   });
 
-  window.addEventListener("afterprint", () => {
-    if (savedState) {
-      allDetails().forEach((d, i) => (d.open = savedState[i]));
-    }
-    savedState = null;
+  $$("dialog.modal").forEach((dlg) => {
+    $(".modal-close", dlg).addEventListener("click", () => dlg.close());
+    // Backdrop clicks target the dialog itself; padding lives on .modal-body,
+    // so this can't fire for clicks on the content.
+    dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); });
   });
 
-// -------------------------------------------------------------------------
-  // 3. GitHub activity — contribution calendar + most-active repos (index.html)
+  // -------------------------------------------------------------------------
+  // 2. GitHub activity — contribution calendar + most-active repos (index.html)
   // -------------------------------------------------------------------------
   // Built from GET /users/{user}/repos?sort=pushed, then GET
   // /repos/{owner}/{repo}/stats/commit_activity per repo. That endpoint
@@ -106,13 +82,7 @@
   }
 
   // GitHub-ish intensity: 0, 1-3, 4-6, 7-10, 11+
-  function level(n) {
-    if (n === 0) return 0;
-    if (n < 4) return 1;
-    if (n < 7) return 2;
-    if (n < 11) return 3;
-    return 4;
-  }
+  const level = (n) => (n === 0 ? 0 : n < 4 ? 1 : n < 7 ? 2 : n < 11 ? 3 : 4);
 
   function renderCalendar(data) {
     if (!calEl) return;
@@ -129,16 +99,17 @@
     // Anchor so the last column is the current week, days[0] = Sunday.
     const today = new Date();
     const sunday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - today.getDay());
-    const dayName = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-    const months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+    const shift = (days) => { const d = new Date(sunday); d.setDate(d.getDate() + days); return d; };
+    const fmtDay = new Intl.DateTimeFormat("en", { weekday: "short" });
+    const fmtMonth = new Intl.DateTimeFormat("en", { month: "short" });
 
     let html = `<p class="cal-summary">${total} contributions in the last year</p><div class="cal-scroll">`;
     html += `<div class="cal-months">`;
     let prevMonth = -1;
     for (let w = 0; w < WEEKS; w++) {
-      const date = new Date(sunday.getFullYear(), sunday.getMonth(), sunday.getDate() + (w - (WEEKS - 1)) * 7);
+      const date = shift((w - (WEEKS - 1)) * 7);
       const m = date.getMonth();
-      html += `<div class="cal-month">${m !== prevMonth ? months[m] : ""}</div>`;
+      html += `<div class="cal-month">${m !== prevMonth ? fmtMonth.format(date) : ""}</div>`;
       prevMonth = m;
     }
     html += `</div><div class="cal-grid">`;
@@ -146,9 +117,9 @@
     ["", "Mon", "", "Wed", "", "Fri", ""].forEach((l) => (html += `<div class="cal-wd">${l}</div>`));
     for (let w = 0; w < WEEKS; w++) {
       for (let d = 0; d < 7; d++) {
-        const date = new Date(sunday.getFullYear(), sunday.getMonth(), sunday.getDate() + (w - (WEEKS - 1)) * 7 + d);
+        const date = shift((w - (WEEKS - 1)) * 7 + d);
         const n = daily[w][d];
-        html += `<div class="cal-cell lvl-${level(n)}" title="${n} commit${n === 1 ? "" : "s"} on ${dayName[d]} ${date.getDate()} ${months[date.getMonth()]}"></div>`;
+        html += `<div class="cal-cell lvl-${level(n)}" title="${n} commit${n === 1 ? "" : "s"} on ${fmtDay.format(date)} ${date.getDate()} ${fmtMonth.format(date)}"></div>`;
       }
     }
     html += `</div>`;

@@ -1,45 +1,273 @@
 ﻿<!doctype html>
 <html lang="en">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Curriculum Vitae</title>
-<meta name="description" content="Curriculum vitae â€” expandable for detail, collapsible for print.">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css">
-</head>
-<body>
-<header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="index.html"><span class="brand-mark">ASJ</span> The Career Credentials</a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html">About</a>
-      <a href="cv.html" aria-current="page">CV</a>
-      <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">GitHub</a>
-    </nav>
-  </div>
-</header>
-<main class="wrap"><div class="cv-paper">
-  <div class="cv-header">
-    <div class="cv-header-main">
-      <h1>Anders Skaarup Johansen</h1>
-      <div class="meta">Postdoc @ Aalborg University & National Centre for AI in Society</div>
-      <div class="cv-contact">
-        <span class="pill"><i class="fas fa-map-marker-alt"></i> Aalborg, Denmark</span>
-        <span class="pill"><i class="fas fa-envelope"></i> <a href="mailto:asj@vornet.dk">asjo@create.aau.dk</a></span>
-        <span class="pill"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
-        <span class="pill"><i class="fab fa-github"></i> <a href="https://github.com/OldManAnders">/OldManAnders</a></span>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Curriculum Vitae</title>
+    <meta name="description" content="Curriculum vitae — compact overview, with detail in pop-ups.">
+    <link rel="icon" type="image/png" href="assets/img/frog-icon.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+  </head>
+  <body>
+    <header class="site">
+      <div class="wrap nav">
+        <a class="brand" href="index.html">
+          <span class="brand-mark"><img src="assets/img/frog-icon.png" alt="Frog logo" width="32" height="32"></span> Curriculum Vitae
+        </a>
+        <nav class="nav-links" aria-label="Primary">
+          <a href="index.html">About</a>
+          <a href="cv.html" aria-current="page">CV</a>
+          <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">GitHub</a>
+        </nav>
       </div>
-    </div>
-    <img class="cv-avatar" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" loading="lazy" onerror="this.style.display='none'">
-  </div>
-  <section class="cv-intro" aria-label="Introduction">
-    <p>Actual CV under construction, gimme some time, i am not good with this frontend stuff.</p>
-  </section>
-</main>
+    </header>
 
-<footer><div class="wrap">© <span id="y"></span> Anders Skaarup Johansen - This page is plain HTML, no tracking.</div></footer>
-<script>document.getElementById('y').textContent=new Date().getFullYear()</script>
-<script src="assets/js/main.js"></script>
-</body>
+    <div class="toolbar no-print" role="toolbar" aria-label="CV controls">
+      <button type="button" onclick="window.print()">
+        <i class="fas fa-print"></i> Print
+      </button>
+      <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">
+        <i class="fas fa-graduation-cap"></i> Google Scholar
+      </a>
+      <a href="https://vbn.aau.dk/en/persons/asjo/" target="_blank" rel="noopener">
+        <i class="fas fa-building-columns"></i> AAU profile
+      </a>
+    </div>
+
+    <main class="wrap">
+      <div class="cv-paper">
+        <div class="cv-header">
+          <div class="cv-header-main">
+            <h1>Anders Skaarup Johansen</h1>
+            <div class="meta">
+              Postdoc @ Aalborg University &amp; National Center for AI in Society
+            </div>
+            <div class="cv-contact">
+              <span class="pill"><i class="fas fa-envelope"></i><a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a></span>
+              <span class="pill"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
+              <span class="pill"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/place/Aalborg">Aalborg, Denmark</a></span>
+            </div>
+          </div>
+          <img class="cv-avatar" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" loading="lazy" onerror="this.style.display='none'">
+        </div>
+
+        <div class="cv-layout">
+          <div class="cv-main">
+            <section class="cv-intro" aria-label="Introduction">
+              <h2>Who am I?</h2>
+              <p>
+                I'm a hobbyist tinkerer and a researcher with passion for automation and perception. My work focuses on how state-of-the-art computer vision algorithms perform in complex, real-world environments and how we can optimize them to balance high performance with responsible &amp; ethical application. Outside of research, I enjoy designing mechanical structures, running my home-lab, and spending time exploring nature.
+              </p>
+            </section>
+
+            <section class="cv-block cv-experience" aria-label="Experience">
+              <p class="cv-hint no-print">Click any role for the full description</p>
+              <h2>Research Experience</h2>
+              <ul class="cv-list">
+                <li class="cv-list-item">
+                  <div class="cv-entry-top">
+                    <span class="cv-entry-title">PostDoc</span>
+                    <span class="cv-entry-sub">@ Aalborg University &amp; CAISA</span>
+                    <span class="cv-chips"><span class="chip">Jan 2024 - Now</span></span>
+                  </div>
+                  <p class="cv-entry-preview">
+                    Working on trustworthy AI by translating ethical, societal, and legal demands into computable metrics. With a focus on ensuring evaluation properly assesses the alignment of AI systems with human values rather than just technical performance.
+                  <button type="button" class="cv-entry-hit" data-modal="m-postdoc" aria-label="Open details: Postdoc at Aalborg University and CAISA"></button>
+                </li>
+                <li class="cv-list-item">
+                  <div class="cv-entry-top">
+                    <span class="cv-entry-title">PhD Fellowship</span>
+                    <span class="cv-entry-sub">@ Aalborg University</span>
+                    <span class="cv-chips"><span class="chip">Jun 2020 - Oct 2023</span></span>
+                  </div>
+                  <p class="cv-entry-preview">
+                    Researched how object-detection and segmentation algorithms perform in unconstrained real-world environments. Adapted models and training pipelines for increased robustness under continuous data drift.
+                  </p>
+                  <button type="button" class="cv-entry-hit" data-modal="m-phd" aria-label="Open details: PhD Fellowship at Aalborg University"></button>
+                </li>
+                <li class="cv-list-item">
+                  <div class="cv-entry-top">
+                    <span class="cv-entry-title">Research Assistant</span>
+                    <span class="cv-entry-sub">@ Aalborg University</span>
+                    <span class="cv-chips"><span class="chip">Sep 2019 - Jun 2020</span></span>
+                  </div>
+                  <p class="cv-entry-preview">
+                    Designed and implemented an extensive sensor array for an autonomous sewer-inspection robot, which needed to process and store large amounts of data in real-time on device.
+                  </p>
+                  <button type="button" class="cv-entry-hit" data-modal="m-ra" aria-label="Open details: Research Assistant at Aalborg University"></button>
+              </ul>
+            </section>
+
+            <section class="cv-block" aria-label="Notable projects">
+              <h2>Recent Projects</h2>
+              <ul class="cv-list cv-list--bars">
+                <li class="cv-list-item">
+                  <div class="cv-entry-top">
+                    <span class="cv-entry-title">Standardization and Compliance with the AI-Act</span>
+                  </div>
+                  <p class="cv-entry-preview">Member of the Danish AI standardization committee (S-855) and CEN/CENELEC JTC 21, contributing to standards and guidelines for responsible AI deployment, with a focus on evaluation methods and metrics for computer vision in support of the EU AI Act. Organize workshops connecting academia and industry on operationalizing responsible AI.</p>
+                </li>
+
+                <li class="cv-list-item">
+                  <div class="cv-entry-top">
+                    <span class="cv-entry-title">Long-term Thermal Drift</span>
+                  </div>
+                  <p class="cv-entry-preview">Collected, curated, and analyzed one of the largest thermal object-detection datasets for long-term drift assessment. Organized open challenges integrating metadata to improve robustness across seasons. Maintain public leaderboards and ongoing analyses to track and characterize performance degradation over time.</p>
+                </li>
+                <li class="cv-list-item">
+                  <div class="cv-entry-top">
+                    <span class="cv-entry-title">Sensor Package for Hazardous Environments</span>
+                  </div>
+                  <p class="cv-entry-preview">Designed and implemented vision sensor packages for autonomous systems in hazardous environments, including sewer-inspection robots, ROVs operating at depths exceeding 30 meters, and static long-term monitoring in ocean environments.</p>
+                </li>
+              </ul>
+            </section>
+          </div>
+
+          <aside class="cv-side">
+            <div class="skill-group">
+              <p class="skill-label">Topics of Research</p>
+              <div class="skill-pills">
+                <span>Trustworthy AI</span>
+                <span>Object Recognition</span>
+                <span>Video Understanding</span>
+                <span>Multi-Modal</span>
+                <span>Segmentation</span>
+                <span>Evaluation Metrics</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <p class="skill-label">Technical Toolbox</p>
+              <div class="skill-pills">
+                <span>PyTorch</span>
+                <span>TensorFlow</span>
+                <span>Docker</span>
+                <span>Proxmox</span>
+                <span>Slurm</span>
+
+              </div>
+            </div>
+            <div class="skill-group">
+              <p class="skill-label">Programming Languages</p>
+              <div class="skill-pills">
+                <span>Python</span>
+                <span>C#</span>
+                <span>C++</span>
+              </div>
+            </div>
+            <div class="skill-group">
+              <p class="skill-label">Spoken Languages</p>
+              <div class="skill-pills">
+                <span>Danish</span>
+                <span>English</span>
+              </div>
+
+            </div>
+            <div class="skill-group">
+              <p class="skill-label">Website and links</p>
+              <span class="pill"><i class="fa fa-globe"></i><a href="https://oldmananders.github.io/"> OldManAnders.github.io/</a></span>
+              <span class="pill"><i class="fab fa-orcid"></i><a href="https://orcid.org/0000-0002-9330-522X"> 0000-0002-9330-522X</a></span>
+              <span class="pill"><i class="fab fa-github"></i><a href="https://github.com/OldManAnders"> /OldManAnders</a></span>
+            </div>
+
+            <p class="skill-label">Education</p>
+            <ul class="edu-list">
+              <li>
+                <div class="edu-top">
+                  <strong>PhD in Computer Vision</strong>
+                  <span class="chip">2023</span>
+                </div>
+                <p class="edu-what">Aalborg University</p>
+                <p class="edu-detail">Thesis: <em>Generic Object Detection and Segmentation for Real-World Environments</em></p>
+              </li>
+              <li>
+                <div class="edu-top">
+                  <strong>Cand.Sc. in Medialogy</strong>
+                  <span class="chip">2019</span>
+                </div>
+                <p class="edu-what">Aalborg University</p>
+                <p class="edu-detail">Thesis: <em>Affect-Based Trust Estimation in Human-Robot Interaction</em></p>
+              </li>
+              <li>
+                <div class="edu-top">
+                  <strong>Bach.Sc. in Medialogy</strong>
+                  <span class="chip">2017</span>
+                </div>
+                <p class="edu-what">Aalborg University </p>
+                <p class="edu-detail">Thesis: <em>The Use of Gamification for Visualizing Data in Industry 4.0</em></p>
+              </li>
+            </ul>
+            
+            <p class="skill-label">Other Participation</p>
+            <ul class="edu-list">
+              <li>
+                <div class="edu-top">
+                  <strong>Danish Standard</strong>
+                  <span class="chip">2024-Now</span>
+                </div>
+                <p class="edu-what">Artificial Intelligence (S-855)</p>
+              </li>
+              <li>
+                <div class="edu-top">
+                  <strong>CEN/CENELEC</strong>
+                  <span class="chip">2025-Now</span>
+                </div>
+                <p class="edu-what">JTC21: WG3: Engineering Aspects</p>
+              </li>
+            </ul>
+
+          </aside>
+        </div>
+
+        <!-- One pop-up per role: the invisible .cv-entry-hit button above opens it -->
+        <dialog id="m-postdoc" class="modal" aria-labelledby="m-postdoc-t">
+          <div class="modal-body">
+            <div class="modal-head">
+              <h3 id="m-postdoc-t">PostDoc &middot; Aalborg University &amp; CAISA</h3>
+              <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
+            </div>
+            <div class="details-body">
+              <p>Here will go some details about the PostDoc position.</p>
+              <p>Please be patient, i am vibing my way to an understanding of front-end development</p>
+            </div>
+          </div>
+        </dialog>
+        <dialog id="m-phd" class="modal" aria-labelledby="m-phd-t">
+          <div class="modal-body">
+            <div class="modal-head">
+              <h3 id="m-phd-t">PhD Fellowship &middot; Aalborg University</h3>
+              <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
+            </div>
+            <div class="details-body">
+              <p>Here will go some details about the PhD fellowship.</p>
+              <p>Please be patient, i am vibing my way to an understanding of front-end development</p>
+            </div>
+          </div>
+        </dialog>
+        <dialog id="m-ra" class="modal" aria-labelledby="m-ra-t">
+          <div class="modal-body">
+            <div class="modal-head">
+              <h3 id="m-ra-t">Research Assistant &middot; Aalborg University</h3>
+              <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
+            </div>
+            <div class="details-body">
+              <p>Here will go some details about the research assistant position.</p>
+              <p>Please be patient, i am vibing my way to an understanding of front-end development</p>
+            </div>
+          </div>
+        </dialog>
+      </div>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        &copy; <span id="y"></span> Anders Skaarup Johansen - Get in touch:
+        <i class="fas fa-envelope"></i><a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a> or
+        <i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
 </html>
