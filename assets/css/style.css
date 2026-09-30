@@ -163,6 +163,14 @@ header.site {
   min-width: 0;
 }
 
+.about-row .cv-avatar {
+  flex: 0 0 auto;
+  transform: scale(125);
+  transform-origin: center;
+  position: relative;
+  z-index: 1;
+}
+
 @media (max-width: 640px) {
   .about-row {
     flex-direction: column-reverse;
@@ -558,10 +566,11 @@ dialog.modal::backdrop {
   border: 1px solid var(--border-strong);
   border-radius: 0;
   width: 210mm;
-  /* A4 wide, shrinks to fit on narrow screens */
+  /* Full A4 when there is room; fluid full-width when there isn't. */
+  max-width: 100%;
+  margin: 0 auto;
   min-height: 297mm;
   /* A4 tall: the sheet always fills a page, and grows if the content needs more */
-  max-width: 100%;
   padding: var(--cv-pad);
   box-shadow: 0 1px 3px rgba(0,0,0,.25);
   position: relative;
@@ -590,8 +599,8 @@ main.wrap:has(> .cv-paper) {
 }
 
 .cv-avatar {
-  width: 110px;
-  height: 90px;
+  width: 80px;
+  height: 70px;
   border-radius: 8px;
   object-fit: cover;
   /* crop image to circle without distortion */
@@ -599,7 +608,7 @@ main.wrap:has(> .cv-paper) {
   background: var(--border);
 }
 
-@media (max-width: 640px) {
+@media (max-width: 700px) {
   .cv-paper .cv-header {
     flex-direction: column-reverse;
     /* picture on top, text below on small screens */
@@ -609,27 +618,27 @@ main.wrap:has(> .cv-paper) {
     width: 80px;
     height: 80px;
   }
-  /* Too narrow for chips beside the title  stack them instead of overflowing */
-  .cv-entry-top, .cv-chips {
-    flex-wrap: wrap;
-  }
 }
 
 .cv-paper .cv-header h1 {
   font-family: Georgia, 'Source Serif 4', serif;
   /* serif for CV name only */
   letter-spacing: -0.03em;
+  font-size: 1.5rem;
 }
 
-/* Two-column layout: main content + sidebar */
+/* Two-column layout: main content + sidebar. This is the default (full A4
+   sheet) so screen matches print. Below 700px the sheet goes fluid and the
+   sidebar collapses underneath instead of squeezing beside the main. */
 .cv-layout {
   display: grid;
   gap: 6px;
+  grid-template-columns: minmax(0, 1.75fr) minmax(180px, .85fr);
 }
 
-@media (min-width: 860px) {
+@media (max-width: 700px) {
   .cv-layout {
-    grid-template-columns: minmax(0, 1.75fr) minmax(220px, .85fr);
+    grid-template-columns: 1fr;
   }
 }
 
@@ -637,25 +646,38 @@ main.wrap:has(> .cv-paper) {
   margin-top: 0;
 }
 
-/* Second and later sections in a column need air above them */
-.cv-block + .cv-block {
-  margin-top: 20px;
+/* Override global h2 negative bottom margin inside CV blocks so the
+   heading-to-list gap is airy and symmetric (was pulling lists up). */
+
+
+/* Faint divider between main sections, mirroring the sidebar modules.
+   Tight spacing so the screen sheet fits one A4 page like the print. */
+.cv-main > section {
+  padding-bottom: 4px;
+  margin-bottom: 4px;
+  border-bottom: 1px solid var(--border);
+}
+.cv-main > section:last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
-/* Entry list used by Experience and Notable Projects: vertical line + one dot
-   per entry. Each entry is title + subtitle + chips on one row, preview below. */
+/* Entry list used by Experience: per-item line + one dot per entry, fully
+   inside each item (same on screen and print, so no redraw needed).
+   Each entry is title + subtitle + chips on one row, preview below. */
 .cv-list {
   list-style: none;
   margin: 0;
   padding: 0;
-  border-left: 2px solid var(--accent);
+  border-left: 0;
 }
 
 .cv-list-item {
   position: relative;
-  /* for the dot pseudo-element and the click target */
-  padding: 4px 8px;
-  /* ~4px between entries */
+  /* for the dot + line pseudo-elements and the click target */
+  padding: 6px 6px 6px 18px;
+  /* symmetric top/bottom, 20px left gutter for line + dot */
 }
 
 /* Only entries that open a pop-up look clickable */
@@ -667,34 +689,40 @@ main.wrap:has(> .cv-paper) {
   background: var(--bg);
 }
 
-/* Bar variant (Notable Projects, like Education): no shared line and no dots —
-   every entry gets its own accent bar. Text formatting is unchanged. */
+/* Bar variant (Notable Projects, like Education): plain list, no line, dots, or bars —
+   text formatting is unchanged. */
 .cv-list--bars {
   border-left: 0;
   display: grid;
-  gap: 12px;
+  gap: 6px;
 }
 
 .cv-list--bars .cv-list-item {
-  padding: 0 0 0 10px;
-  border-left: 2px solid var(--accent);
+  padding: 6px 0;
+  border-left: 0;
 }
 
-.cv-list--bars .cv-list-item::before {
-  content: none;
+/* Bars variant has no timeline gutter, so strip the 4px text offsets used
+   elsewhere: title + preview then start flush under the section h2,
+   exactly like the Who-am-I text. */
+.cv-list--bars .cv-entry-title {
+  padding-left: 0;
 }
 
-/* Margin note for the pop-ups: sits in the left margin, top-aligned with the
-   Experience heading, so nothing interactive is left inside the printable paper. */
+.cv-list--bars .cv-entry-preview {
+  margin: 0 0 -5px;
+}
+
+/* Margin note for the pop-ups: sits in the left margin, vertically centered on
+   the Experience section, so nothing interactive is left inside the paper. */
 .cv-hint {
   position: absolute;
-  top: 0;
+  top: 50%;
   right: calc(100% + var(--cv-pad) + 8px);
   margin: 0;
   writing-mode: vertical-rl;
-  /* stacked letters, no rotation maths needed ... */
-  transform: rotate(180deg);
-  /* ... then turned so it reads bottom-to-top */
+  /* centered vertically, then turned so it reads bottom-to-top */
+  transform: translateY(-50%) rotate(180deg);
   white-space: nowrap;
   font-size: .72rem;
   letter-spacing: .06em;
@@ -717,7 +745,7 @@ main.wrap:has(> .cv-paper) {
 
 .cv-entry-top {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   gap: 4px 4px;
   align-items: center;
 }
@@ -725,7 +753,7 @@ main.wrap:has(> .cv-paper) {
 .cv-chips {
   display: inline-flex;
   gap: 2px;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
   flex: 0 0 auto;
   align-items: center;
   margin-left: auto;
@@ -750,13 +778,14 @@ main.wrap:has(> .cv-paper) {
   color: var(--muted-2);
 }
 
-/* Short preview text under a CV entry (4-line clamp, pop-up has the full text) */
+/* Short preview text under a CV entry (4-line clamp, pop-up has the full text).
+   Sized to match print so the on-screen sheet is the same scale. */
 .cv-entry-preview {
-  margin: 0px 4px 0px;
-  font-size: 0.94rem;
+  margin: 0px 4px -5px;
+  font-size: 0.82rem;
   color: var(--fg);
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.35;
   display: -webkit-box;
   -webkit-line-clamp: 5;
   -webkit-box-orient: vertical;
@@ -765,44 +794,86 @@ main.wrap:has(> .cv-paper) {
 
 .cv-intro {
   background: var(--card);
-  margin: 0 0 6px;
+  margin: 0;
   color: var(--fg);
-  font-size: .94rem;
-  line-height: 1.4;
+  font-size: .82rem;
+  font-weight: 400;
+  line-height: 1.35;
 }
 
 .cv-intro p {
-  margin: 0.2em 0;
+  margin: 0.1em 0;
 }
 
-/* Dot on the list line, one per entry */
-.cv-list-item::before {
+.cv-list:not(.cv-list--bars) .cv-list-item::before {
   content: "";
   position: absolute;
-  left: -9px;
-  top: 9px;
-  /* dot centred on the title / subtitle / chips row */
+  left: 0;
+  top: 10px;
   width: 12px;
   height: 12px;
   border-radius: 50%;
   background: var(--border-strong);
-  border: 2px solid var(--card);
-  box-shadow: 0 0 0 2px var(--border);
+  border: 2px solid var(--border);
+  box-shadow: none;
+  z-index: 1;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
+}
+
+.cv-list:not(.cv-list--bars) .cv-list-item::after {
+  content: "";
+  position: absolute;
+  left: 7px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--accent);
+  z-index: 0;
+  print-color-adjust: exact;
+  -webkit-print-color-adjust: exact;
 }
 
 /* First entry is the current role / newest project  filled dot marks "now" */
-.cv-list-item:first-child::before {
+.cv-list:not(.cv-list--bars) .cv-list-item:first-child::before {
   background: var(--accent);
-  box-shadow: 0 0 0 1px var(--accent);
+  border-color: var(--accent);
 }
 
-/* Right sidebar (skills, education) */
+.cv-list:not(.cv-list--bars) .cv-list-item:first-child::after {
+  top: 16px;
+}
+
+.cv-list:not(.cv-list--bars) .cv-list-item:last-child::after {
+  /* End 3px below the text: preview has -5px bottom margin + 6px item
+     padding = 1px gap, so extend 2px below the item (= text + 3px). */
+  bottom: -2px;
+  height: auto;
+  background:
+    linear-gradient(var(--accent), var(--accent)) top left / 2px 16px no-repeat,
+    repeating-linear-gradient(to bottom, var(--accent) 0 2px, transparent 2px 5px) bottom left / 2px calc(100% - 24px) no-repeat;
+}
+
+/* Single-entry list: no solid stub above, dotted tail only below the dot. */
+.cv-list:not(.cv-list--bars) .cv-list-item:first-child:last-child::after {
+  top: 16px;
+  background:
+    repeating-linear-gradient(to bottom, var(--accent) 0 2px, transparent 2px 5px) top left / 2px 100% no-repeat;
+}
+
+/* Bar variant keeps no dots — must stay after the rules above */
+.cv-list.cv-list--bars .cv-list-item::before {
+  content: none;
+}
+
+/* Right sidebar (skills, education). Sidebar below main on narrow sheets. */
 .cv-side {
   border-left: 1px solid var(--border);
-  padding-left: 22px;
+  padding-left: 12px;
+  min-width: 0;
 }
 
-@media (max-width: 859px) {
+@media (max-width: 700px) {
   .cv-side {
     border-left: none;
     border-top: 1px solid var(--border);
@@ -827,7 +898,7 @@ main.wrap:has(> .cv-paper) {
   letter-spacing: .02em;
   text-transform: uppercase;
   color: var(--accent);
-  margin: 0 4px 2px;
+  margin: 0 0 2px;
 }
 
 .skill-pills {
@@ -852,19 +923,26 @@ main.wrap:has(> .cv-paper) {
   padding: 0 0 4px;
   margin: 0 0 4px;
   display: grid;
-  gap: 12px;
+  gap: 6px;
   border-bottom: 1px solid var(--border);
 }
 
+/* No trailing divider after the last sidebar module */
+.cv-side > :last-child {
+  border-bottom: 0;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
 .edu-list li {
-  border-left: 2px solid var(--accent);
-  padding-left: 10px;
+  border-left: 0;
+  padding: 2px 0;
 }
 
 .edu-top {
   display: flex;
   align-items: baseline;
-  gap: 6px;
+  gap: 4px;
 }
 
 .edu-top strong {
@@ -879,13 +957,14 @@ main.wrap:has(> .cv-paper) {
 
 .edu-what {
   margin: 0;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: var(--fg);
 }
 
 .edu-detail {
   margin: 1px 0 0;
-  font-size: .76rem;
+  font-size: .82rem;
+  font-weight: 400;
   color: var(--muted);
   line-height: 1.35;
 }
@@ -1028,8 +1107,8 @@ footer a:hover {
     /* @page margin replaces the sheet's own 1cm padding */
     padding: 0;
   }
-  /* Keep the two columns on paper — the printable width is narrower than the
-     860px breakpoint, so the wide layout has to be restated here. */
+  /* Keep the two columns on paper even though the printable width is below
+     the 700px screen stacking breakpoint. */
   .cv-layout {
     grid-template-columns: minmax(0, 1.75fr) minmax(180px, .85fr);
   }
@@ -1039,87 +1118,24 @@ footer a:hover {
     padding: 0 0 0 10px;
     margin-top: 0;
   }
-  /* Fit-to-one-page: screen type/spacing slightly overflows A4, so tighten
-     print-only type, gaps and margins until the sheet is exactly 1 page.
-     Root font-size (not body): nearly all type is rem-sized. */
-  html {
-    font-size: 13px;
-  }
+  /* Base screen styles already use the fit-to-one-page scale, so print only
+     needs to keep the two columns even on narrow paper. */
   body {
     line-height: 1.35;
   }
-  .cv-paper .cv-header h1 {
-    font-size: 1.5rem;
-  }
-  .cv-entry-preview, .cv-intro {
-    font-size: .82rem;
-    line-height: 1.3;
-  }
-  .cv-block + .cv-block {
-    margin-top: 10px;
-  }
-  .edu-list, .cv-list--bars {
-    gap: 6px;
-  }
-  .cv-avatar {
-    width: 80px;
-    height: 70px;
+  /* Keep the dotted tail at text + 3px on paper too (same as screen). */
+  .cv-list:not(.cv-list--bars) .cv-list-item:last-child::after {
+    bottom: -2px;
   }
   h3 {
     margin: 18px 0 8px;
-  }
-  /* Title rows are nowrap on screen; let them wrap on the narrow page. */
-  .cv-entry-top, .cv-chips {
-    flex-wrap: wrap;
   }
   /* Pop-ups are on-screen only: paper keeps the one-page summary */
   dialog.modal, .cv-entry-hit {
     display: none !important;
   }
-  /* Timeline dots are background-painted on screen, which printers drop
-     with "Background graphics" off. Keep them filled via exact color
-     adjust, with the ring as a real border (borders always print). */
-  .cv-list-item::before {
-    background: var(--border-strong) !important;
-    border: 2px solid var(--border) !important;
-    box-shadow: none !important;
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-  .cv-list-item:first-child::before {
-    background: var(--accent) !important;
-    border-color: var(--accent) !important;
-  }
-  /* The dot straddles the ul border line (left: -9px), which slices it
-     into half-circles in some PDF pipelines. Redraw line + dots fully
-     inside each item instead: per-item line segment, dot seated in padding. */
-  .cv-list:not(.cv-list--bars) {
-    border-left: 0;
-  }
-  .cv-list:not(.cv-list--bars) .cv-list-item {
-    padding-left: 20px;
-  }
-  .cv-list:not(.cv-list--bars) .cv-list-item::before {
-    left: 0;
-  }
-  .cv-list:not(.cv-list--bars) .cv-list-item::after {
-    content: "";
-    position: absolute;
-    left: 5px;
-    top: 0;
-    bottom: 0;
-    width: 2px;
-    background: var(--accent);
-    print-color-adjust: exact;
-    -webkit-print-color-adjust: exact;
-  }
-  .cv-list:not(.cv-list--bars) .cv-list-item:first-child::after {
-    top: 15px;
-  }
-  .cv-list:not(.cv-list--bars) .cv-list-item:last-child::after {
-    bottom: auto;
-    height: 15px;
-  }
+  /* Screen timeline already uses inside dots + per-item line with exact
+     color adjust, so print needs no redraw — identical rendering. */
   /* Show the target of thesis links. Contact links are left alone — the URL is in the text. */
   .edu-detail a::after {
     content: " (" attr(href) ")";
