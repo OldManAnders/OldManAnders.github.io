@@ -165,10 +165,6 @@ header.site {
 
 .about-row .cv-avatar {
   flex: 0 0 auto;
-  transform: scale(125);
-  transform-origin: center;
-  position: relative;
-  z-index: 1;
 }
 
 @media (max-width: 640px) {
