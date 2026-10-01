@@ -75,7 +75,7 @@
   function renderError() {
     if (calEl) calEl.innerHTML =
       `<p class="h3">GitHub activity couldn't be loaded.</p>` +
-      `<p class="meta">The GitHub API may be rate-limited or unreachable. It should appear when the hourly limit resets, or on the deployed site.</p>`;
+      `<p class="repo-summary">The GitHub API may be rate-limited or unreachable. It should appear when the hourly limit resets, or on the deployed site.</p>`;
     const summaryEl = $("#repos-summary");
     if (summaryEl) summaryEl.textContent = "";
     if (reposEl) reposEl.innerHTML = "";
@@ -159,7 +159,7 @@
         ({ repo, n }) =>
           `<li class="repo">` +
           `<a href="${repo.html_url}" target="_blank" rel="noopener">${repo.name}</a>` +
-          `<span class="meta">${n} commit${n === 1 ? "" : "s"} last month${repo.language ? " &middot; " + repo.language : ""}</span>` +
+          `<span class="repo-meta">${n} commit${n === 1 ? "" : "s"} last month${repo.language ? " &middot; " + repo.language : ""}</span>` +
           `<p class="desc">${(repo.description || "").replace(/</g, "&lt;")}</p>` +
           `</li>`
       )
