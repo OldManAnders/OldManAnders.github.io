@@ -7,7 +7,7 @@
 <meta name="description" content="Anders Skaarup Johansen · Postdoc at Aalborg University, computer vision and responsible AI.">
 <link rel="icon" type="image/png" href="assets/img/frog-icon.png">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css?v=4">
+<link rel="stylesheet" href="assets/css/style.css?v=11">
 </head>
 <body>
 <header class="site">
@@ -23,12 +23,12 @@
 
 <main class="wrap">
   <section class="about">
-    <h1>Who am i?</h1>
+    <h1>Who am I?</h1>
     <div class="about-row">
       <img class="cv-avatar" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" loading="lazy" onerror="this.style.display='none'">
       <div class="about-text">
         <h2>Anders Skaarup Johansen</h2>
-        <p class="lead">I am a computer-vision researcher and hobbyist tinkerer, with a focus on how state-of-the-art computer vision performs outside the lab. With a growing interest in high-performing systems that aim to maintain alignment with human values and while solving real-world problems.</p>
+        <p class="lead">I am a computer-vision researcher and a hobbyist tinkerer. My work is about how state-of-the-art vision systems behave outside the lab — in noisy data, changing weather, and conditions nobody wrote into the training set — and about evaluation methods that measure whether a system still does the right thing when the world moves underneath it.</p>
       </div>
     </div>
     <div class="pill-row">
@@ -39,26 +39,66 @@
     </div>
   </section>
 
-  <h3>What is my current focus</h3>
+  <h3>What I'm working on</h3>
   <div class="grid cols2">
     <div class="card">
       <h3><i class="fas fa-microscope" style="color:var(--accent)"></i> Responsible use of AI</h3>
-      <p>Adapting ethical, societal and legal demands to computable metrics for public and private sector evaluation, at the National Center for AI in Society.</p>
+      <p>Adapting ethical, societal and legal requirements into computable metrics for public and private sector evaluation, 
+      at the National Center for AI in Society. As well as practical use-cases as a part of the Responsible AI for Value Creation (REPAI) project.</p>
+      <div class="card-links">
+        <a href="https://caisa.dk/en" target="_blank" rel="noopener">CAISA</a>
+        <a href="https://vbn.aau.dk/en/projects/responsible-ai-for-value-creation/" target="_blank" rel="noopener">REPAI</a>
+      </div>
+    
     </div>
       <div class="card">
-      <h3><i class="fas fa-fish" style="color:var(--accent)"></i> Underwater image-analysis</h3>
-      <p>Researching and developing a camera setup for underwater imaging and analysis, with the goal of mapping rate of biofouling on underwater structures</p>
+      <h3><i class="fas fa-fish" style="color:var(--accent)"></i> Underwater Image-analysis</h3>
+      <p>Researching and developing a camera setup for underwater imaging and analysis, with the goal of mapping the rate of biofouling on underwater structures. Trying to maintain and ensure robust image capture for long-term marine deployments.</p>
+      <div class="card-links">
+        <a href="https://lotus-pto.eu/" target="_blank" rel="noopener">LOTUS-PTO</a>
+      </div>
     </div>
   </div>
+
   <div class="grid cols2" style="margin-top:16px">
-      <div class="card">
+    <div class="card">
       <h3><i class="fas fa-clipboard-list" style="color:var(--accent)"></i> Standardization</h3>
-      <p>National Expert at Dansk Standard (S-855) & CEN/CENELEC JTC21, working on evaluation of computer-vision systems to support the AI-Act. Ensuring accurate assessment of system performance.</p>
+      <p>National Expert at Dansk Standard (S-855) &amp; CEN/CENELEC JTC21, working on evaluation of computer-vision systems to support the AI Act, and ensuring accurate assessment of system performance. While contributing to the academic discussion surrounding the feasibility of closed-set evaluation practices.</p>
+      <div class="card-links">
+        <a href="https://www.ds.dk/da/fagomraader/it-og-digitalisering/kunstig-intelligens" target="_blank" rel="noopener">DS - AI Udvalg</a>
+        <a href="https://jtc21.eu/" target="_blank" rel="noopener">CEN/CENELEC JTC21</a>
+      </div>
     </div>
     <div class="card">
-      <h3><i class="fas fa-cube" style="color:var(--accent)"></i> 3D Printing</h3>
-      <p>Designing and building 3D printed structures for various applications. Currently i am in my 'Functional Print'-phase, where i focus on printing functional parts for my homelab.
-      </p>
+      <h3><i class="fas fa-database" style="color:var(--accent)"></i> Datasets &amp; Benchmarks</h3>
+      <p>Building and maintaining long-term datasets, trying to measure degradation of system performance over time and evaluate how robust these systems are when exposed to real-world degradation of the input image, both in the short and long term.</p>
+      <div class="card-links">
+        <a href="https://www.kaggle.com/datasets/ivannikolov/longterm-thermal-drift-dataset" target="_blank" rel="noopener">LTD Dataset</a>
+        <a href="https://huggingface.co/datasets/vapaau/LTDv2" target="_blank" rel="noopener">LTDv2 Dataset</a>
+        <a href="https://huggingface.co/datasets/vapaau/jambo" target="_blank" rel="noopener">JAMBO Dataset</a>
+        <a href="https://chalearnlap.cvc.uab.es/challenge/51/description/" target="_blank" rel="noopener">ChaLearn Challenge</a>
+        <a href="https://www.codabench.org/competitions/10954/" target="_blank" rel="noopener">RTIOD Challenge</a>
+      </div>
+    </div>
+  </div>
+
+  <h3>What do i do outside of work</h3>
+  <div class="grid cols2">
+    <div class="card">
+      <h3><i class="fas fa-cube" style="color:var(--accent)"></i> 3D printing</h3>
+      <p>Mostly functional prints: brackets, enclosures and mounts for camera rigs and the homelab. Currently in a functional-print phase, where every print has to solve an actual problem.</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-server" style="color:var(--accent)"></i> Homelab</h3>
+      <p>A Proxmox host running the services I use daily, plus storage and compute for small experiments. Equal parts useful and an excuse to learn how the stack underneath everything works.</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-microchip" style="color:var(--accent)"></i> Electronics</h3>
+      <p>Mostly hobbyist tinkering with microcontrollers and sensors, but also building custom camera rigs for research projects. I enjoy the challenge of making a system work in the real world.</p>
+    </div>
+    <div class="card">
+      <h3><i class="fas fa-water" style="color:var(--accent)"></i> Diving</h3>
+      <p>Exploring underwater environments and marine ecosystems. I enjoy the challenge of navigating and documenting the diverse life forms and geological features found in the ocean.</p>
     </div>
   </div>
 
@@ -66,13 +106,9 @@
   <div id="contributions"></div>
   <div id="gh-updated" class="repo-summary"></div>
 
-  <h3>Most active repos this month</h3>
-  <p id="repos-summary" class="repo-summary"></p>
-  <ul class="repo-list" id="repos" data-username="OldManAnders"></ul>
-
 </main>
 
 <footer><div class="wrap">© <span id="y"></span> Anders Skaarup Johansen - Get in touch: <i class="fas fa-envelope"></i> <a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a> or <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></div></footer>
-<script src="assets/js/main.js?v=2"></script>
+<script src="assets/js/main.js?v=3"></script>
 </body>
 </html>
