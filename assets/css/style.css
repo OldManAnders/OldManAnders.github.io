@@ -249,7 +249,7 @@ h3 {
   margin: 0 0 12px;
 }
 
-/* --------  5. Cards & repo list (used on index.html)   --------*/
+/* --------  5. Cards (used on index.html)   --------*/
 .grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -263,7 +263,7 @@ h3 {
 }
 
     /* two columns on tablets+ */
-.card, .repo {
+.card {
   border: 1px solid var(--border);
   border-radius: 14px;
   background: var(--card);
@@ -275,7 +275,7 @@ h3 {
   padding: 18px;
 }
 
-.card:hover, .repo:hover {
+.card:hover {
   box-shadow: var(--shadow-hover);
   transform: translateY(-1px);
   border-color: var(--border-strong);
@@ -295,68 +295,48 @@ h3 {
   line-height: 1.55;
 }
 
-.repo-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: grid;
-  gap: 14px;
+/* Link row at the bottom of a Selected work card */
+.card-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 14px;
+  margin-top: 10px;
+  font-size: .86rem;
+  font-weight: 600;
 }
 
-@media (min-width: 720px) {
-  .repo-list {
-    grid-template-columns: 1fr 1fr;
-  }
+.card-links a::after {
+  content: " \2197";
+  font-size: .85em;
 }
 
-.repo {
-  padding: 16px;
-  position: relative;
-  overflow: hidden;
+/* Prose blocks under a section heading (My path here) */
+.prose {
+  max-width: 70ch;
 }
 
-/* Left accent bar that fades in on hover */
-.repo::before {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 3px;
-  background: var(--accent);
-  opacity: 0;
-  transition: .18s;
-}
-
-.repo:hover::before {
-  opacity: 1;
-}
-
-.repo a {
-  font-weight: 700;
+.prose p {
+  margin: 0 0 12px;
   color: var(--fg);
   font-size: .97rem;
+  line-height: 1.6;
 }
 
-.repo a:hover {
+.prose p:last-child {
+  margin-bottom: 0;
+}
+
+.prose strong {
   color: var(--accent);
+  font-weight: 600;
 }
 
-.repo .desc {
+/* One-line intro under a section heading (Beyond the lab) */
+.section-lead {
+  max-width: 70ch;
+  margin: -2px 0 16px;
   color: var(--muted);
-  font-size: .9rem;
-  margin: 6px 0 0;
-  line-height: 1.15;
-}
-
-.repo .repo-meta {
-  font-size: .8rem;
-  color: var(--muted-2);
-  margin-top: 6px;
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  align-items: center;
+  font-size: .95rem;
 }
 
 /* --------  6. CV header & toolbar (used on cv.html)   --------*/
@@ -386,6 +366,22 @@ h3 {
   gap: 3px;
   white-space: nowrap;
   flex: 0 0 auto;
+}
+
+/* Personal site link directly under the role in the CV banner */
+.cv-site {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin-top: 2px;
+  font-size: .82rem;
+  color: var(--muted-2);
+}
+.cv-site i {
+  font-size: .72rem;
+}
+.cv-site:hover {
+  color: var(--accent);
 }
 
 /* Expand / Collapse buttons above the CV sections */
@@ -425,7 +421,7 @@ h3 {
 /* --------  7. Detail pop-ups  native <dialog>, no JS library needed   --------*/
 dialog.modal {
   width: min(640px, 92vw);
-  max-height: min(80vh, 640px);
+  max-height: min(86vh, 780px);
   padding: 0;
   border: 1px solid var(--border-strong);
   border-radius: 12px;
@@ -442,7 +438,7 @@ dialog.modal::backdrop {
 /* Padding + scroll live here so backdrop clicks still hit the dialog itself */
 .modal-body {
   padding: 18px 20px 20px;
-  max-height: min(80vh, 640px);
+  max-height: min(86vh, 780px);
   overflow: auto;
 }
 
@@ -507,7 +503,7 @@ dialog.modal::backdrop {
 }
 
 .cv-entry-title {
-  flex: 1 1 auto;
+  flex: 0 1 auto;
   min-width: 0;
   font-size: 1.0rem;
   letter-spacing: -0.01em;
@@ -521,11 +517,102 @@ dialog.modal::backdrop {
 .details-body {
   color: var(--fg);
   font-size: .94rem;
-  line-height: 1.15;
+  line-height: 1.4;
 }
 
 .details-body p {
-  margin: 0;
+  margin: 0 0 .65em;
+}
+
+.details-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Small caps-ish section label inside a pop-up ("Projects", "Main outputs") */
+.details-body .details-sub {
+  margin: .9em 0 .35em;
+  font-size: .74rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.details-list {
+  margin: 0 0 .65em;
+  padding-left: 1.05em;
+  display: grid;
+  gap: .35em;
+}
+
+.details-list li::marker {
+  color: var(--accent);
+}
+
+/* Figures inside a pop-up. Default: full width. --contain: shrink to fit a
+   tall/square logo. --row: three small images side by side (dataset samples). */
+.details-figure {
+  margin: .8em 0;
+}
+
+.details-figure img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+}
+
+.details-figure figcaption {
+  margin-top: 5px;
+  font-size: .76rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+.details-figure--contain img {
+  width: auto;
+  max-width: 100%;
+  max-height: 230px;
+  margin: 0 auto;
+}
+
+.details-figure--row {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.details-figure--row img {
+  border-radius: 4px;
+}
+
+.details-figure--row figcaption {
+  grid-column: 1 / -1;
+}
+
+/* Outbound links at the bottom of a pop-up, as small chips */
+.details-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: .9em;
+}
+
+.details-links a {
+  font-size: .78rem;
+  font-weight: 650;
+  padding: 3px 8px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--bg);
+  color: var(--accent);
+}
+
+.details-links a:hover {
+  border-color: var(--border-strong);
+  text-decoration: none;
 }
 
 /* --------  8. CV paper  the bordered "sheet" with two-column layout   --------*/
@@ -598,6 +685,11 @@ main.wrap:has(> .cv-paper) {
 .cv-paper .cv-avatar {
   width: 80px;
   height: 80px;
+  /* Grow the portrait up and right into the sheet's margin. A transform does
+     not take part in layout, so the header keeps its footprint and the
+     name/role/pills do not move. Scale is the only knob to change. */
+  transform: scale(1.25);
+  transform-origin: bottom left;
 }
 
 @media (max-width: 700px) {
@@ -926,6 +1018,108 @@ main.wrap:has(> .cv-paper) {
   font-style: italic;
 }
 
+/* --------  8.5 Split sheets  publications, talks, media  --------*/
+/* Extra A4 sheets stacked under the CV: a visible gap between them on screen,
+   each one forced onto a fresh physical page when printed. They reuse the
+   .cv-paper tokens, so the light "paper" theme applies unchanged. */
+.cv-paper {
+  scroll-margin-top: 72px; /* keep anchored sheet titles clear of the sticky header */
+}
+
+.cv-paper + .cv-paper {
+  margin-top: 26px;
+}
+
+.sheet-head {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  padding-bottom: 6px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+}
+
+.sheet-head h2 {
+  margin: 0;
+  font-size: 1.25rem;
+}
+
+.sheet-who {
+  margin-left: auto;
+  text-align: right;
+  font-size: .7rem;
+  line-height: 1.35;
+  color: var(--muted);
+}
+
+/* Group label inside a sheet: "Journal articles & reviews", "Invited talks" */
+.sheet-sub {
+  margin: 9px 0 3px;
+  font-size: .7rem;
+  font-weight: 700;
+  letter-spacing: .07em;
+  text-transform: uppercase;
+  color: var(--accent);
+  break-after: avoid;
+}
+
+/* Numbered reference list. The counter lives on the sheet so the numbering
+   runs continuously across the groups instead of restarting per section. */
+#publications {
+  counter-reset: pub;
+}
+
+.pub-list {
+  margin: 0 0 2px;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 3px;
+}
+
+.pub-list li {
+  position: relative;
+  padding-left: 17px;
+  font-size: .72rem;
+  line-height: 1.34;
+  break-inside: avoid;
+}
+
+.pub-list li::before {
+  counter-increment: pub;
+  content: counter(pub) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: .66rem;
+  font-weight: 700;
+  color: var(--muted);
+}
+
+/* Unnumbered variant: bullets for talks, media, funding */
+.pub-list--plain li::before {
+  counter-increment: none;
+  content: "\2013";
+  font-weight: 400;
+}
+
+.pub-list b {
+  font-weight: 700;
+}
+
+.pub-list .t {
+  font-weight: 600;
+}
+
+.pub-list .v {
+  color: var(--muted);
+}
+
+.pub-list .doi {
+  font-size: .66rem;
+  white-space: nowrap;
+}
+
 /* --------  9. Footer   --------*/
 footer {
   border-top: 1px solid var(--border);
@@ -1029,7 +1223,10 @@ footer a:hover {
 @media print {
   @page {
     size: A4;
-    margin: 1cm;
+    /* Right margin is 4mm, not 1cm: the sheet re-creates the missing 6mm as
+       padding below, so the enlarged portrait can overhang the text column
+       without Chromium's shrink-to-page-width scaling the whole CV down. */
+    margin: 1cm 4mm 1cm 1cm;
   }
   /* Hide chrome that is useless on paper */
   header.site, .toolbar, .no-print, footer {
@@ -1057,22 +1254,48 @@ footer a:hover {
     width: auto;
     min-height: auto;
     /* the A4 floor is a screen thing: on paper the page itself is the A4 */
-    /* @page margin replaces the sheet's own 1cm padding */
-    padding: 0;
+    /* @page margin replaces the sheet's own 1cm padding; the 6mm right
+       padding is the overhang pocket for the portrait. */
+    padding: 0 6mm 0 0;
   }
   /* Keep the two columns on paper even though the printable width is below
-     the 700px screen stacking breakpoint. */
+     the 700px screen stacking breakpoint. Floats instead of grid: browsers
+     fragment floats across pages, while a grid container even a hair taller
+     than the page is moved whole and leaves the header alone on page 1. */
   .cv-layout {
-    grid-template-columns: minmax(0, 1.75fr) minmax(180px, .85fr);
+    display: block;
+    position: relative;
+  }
+  .cv-main {
+    float: left;
+    width: 67.6%;
+    padding-right: 6px;
   }
   .cv-side {
-    border-left: 1px solid var(--border);
-    border-top: 0;
+    float: right;
+    width: 32.4%;
+    border: 0;
     padding: 0 0 0 10px;
     margin-top: 0;
   }
-  /* Base screen styles already use the fit-to-one-page scale, so print only
-     needs to keep the two columns even on narrow paper. */
+  /* A float is only as tall as its own content, so the sidebar's border-left
+     would stop short: draw the divider against the whole two-column block. */
+  .cv-layout::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 67.6%;
+    border-left: 1px solid var(--border);
+  }
+  .cv-layout::after {
+    content: "";
+    display: block;
+    clear: both;
+  }
+  /* Base screen styles already use the fit-to-one-page scale. Print tightens
+     the leading and spacing a little so the sheet still fits when the
+     browser or printer reserves extra room for its own header/footer. */
   body {
     line-height: 1.35;
   }
@@ -1085,4 +1308,38 @@ footer a:hover {
   }
   /* Screen timeline already uses inside dots + per-item line with exact
      color adjust, so print needs no redraw — identical rendering. */
+
+  /* Split sheets: each one starts on its own physical page */
+  .cv-paper + .cv-paper {
+    margin-top: 0;
+    break-before: page;
+    page-break-before: always;
+  }
+  .sheet-head {
+    margin-bottom: 6px;
+  }
+  .sheet-sub {
+    margin: 8px 0 2px;
+  }
+  .pub-list li {
+    font-size: 8.4pt;
+  }
+
+  /* Print-fit headroom: the first sheet must keep its header and body on the
+     same page even when the browser prints with its own header/footer or a
+     larger margin. These trims buy ~8 mm without touching screen styles. */
+  .cv-paper .cv-header {
+    margin-bottom: 4px;
+  }
+  .cv-paper .cv-header h1 {
+    line-height: 1.15;
+  }
+  .cv-main > section {
+    padding-bottom: 2px;
+    margin-bottom: 2px;
+  }
+  .cv-intro,
+  .cv-entry-preview {
+    line-height: 1.3;
+  }
 }
