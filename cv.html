@@ -7,7 +7,7 @@
     <meta name="description" content="Curriculum vitae — compact overview, with detail in pop-ups.">
     <link rel="icon" type="image/png" href="assets/img/frog-icon.png">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=2">
+    <link rel="stylesheet" href="assets/css/style.css?v=14">
   </head>
   <body>
     <header class="site">
@@ -46,7 +46,7 @@
             <div class="cv-contact">
               <span class="pill"><i class="fas fa-envelope"></i><a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a></span>
               <span class="pill"><i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
-              <span class="pill"><i class="fa-solid fa-location-dot"></i><a href="https://www.google.com/maps/place/Aalborg">Aalborg, Denmark</a></span>
+              <span class="pill"><i class="fa fa-globe"></i><a href="https://oldmananders.github.io/">oldmananders.github.io</a></span>
             </div>
           </div>
           <img class="cv-avatar" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" loading="lazy" onerror="this.style.display='none'">
@@ -57,25 +57,26 @@
             <section class="cv-intro" aria-label="Introduction">
               <h2>Who am I?</h2>
               <span>
-                I'm a hobbyist tinkerer and a researcher with passion for automation and machine vision. My research focuses on how state-of-the-art computer vision algorithms perform in real-world environments where data is noisy and full of pipeline induced artefacts. With a focus on balancing high performance with responsible &amp; ethical application. I don't care about systems that beat the benchmarks, i care about when they break and if they actually solve the problem they are tasked with.
-              </span>
-              <span>
-                <br>When i am not researching and trying to ''save the world'', I enjoy designing parametric CAD models, running my home-lab, and spending time exploring nature.</span>
+                I'm a computer vision researcher and a hobbyist tinkerer, who likes to figure out how things work, and use that knowledge to build something new. 
+                My research has focused on how state-of-the-art computer vision systems perform outside the lab, where input data is noisy and 
+                full of artefacts. Trying to figure out what signal we can capture from the data, and what changes could help isolate that signal, 
+                has led me to work on long-term deployments of vision systems in the wild, and on evaluation methods that measure how well a system 
+                aligns with human values. I care more about whether a system working as intended when conditions change than about a small gain on a benchmark.
               </span>
             </section>
 
             <section class="cv-block cv-experience" aria-label="Experience">
-              <p class="cv-hint no-print">Click any role for the full description</p>
+              <p class="cv-hint no-print">Click any role or project for the full description</p>
               <h2>Research Career</h2>
               <ul class="cv-list cv-list--timeline">
                 <li class="cv-list-item">
                   <div class="cv-entry-top">
-                    <span class="cv-entry-title">PostDoc</span>
+                    <span class="cv-entry-title">Postdoc</span>
                     <span class="cv-entry-sub">@ Aalborg University &amp; CAISA</span>
                     <span class="cv-chips"><span class="chip">Jan 2024 - Now</span></span>
                   </div>
                   <p class="cv-entry-preview">
-                    Working on trustworthy AI by translating ethical, societal, and legal demands into computable metrics. With a focus on ensuring evaluation properly assesses the alignment of AI systems with human values rather than just technical performance.
+                    I work on trustworthy AI: turning ethical, societal and legal demands into metrics that can be computed. Most of my time goes into making sure an evaluation measures how well a system aligns with human values, and not only how well it performs.
                   </p>
                   <button type="button" class="cv-entry-hit" data-modal="m-postdoc" aria-label="Open details: Postdoc at Aalborg University and CAISA"></button>
                 </li>
@@ -86,7 +87,7 @@
                     <span class="cv-chips"><span class="chip">Jun 2020 - Oct 2023</span></span>
                   </div>
                   <p class="cv-entry-preview">
-                    Researched how object-detection and segmentation algorithms perform in unconstrained real-world environments. Adapted models and training pipelines for increased robustness under continuous data drift.
+                    I studied how object detection and segmentation behave in unconstrained real-world settings, and adapted models and training pipelines to hold up under continuous data drift.
                   </p>
                   <button type="button" class="cv-entry-hit" data-modal="m-phd" aria-label="Open details: PhD Fellowship at Aalborg University"></button>
                 </li>
@@ -97,7 +98,7 @@
                     <span class="cv-chips"><span class="chip">Sep 2019 - Jun 2020</span></span>
                   </div>
                   <p class="cv-entry-preview">
-                    Designed and implemented an extensive sensor array for an autonomous sewer-inspection robot, which needed to process and store large amounts of data in real-time on device.
+                    I designed and built a prototype sensor array and capture pipeline for an autonomous sewer-inspection robot, sized for on-device processing and storage under tight power and space limits.
                   </p>
                   <button type="button" class="cv-entry-hit" data-modal="m-ra" aria-label="Open details: Research Assistant at Aalborg University"></button>
                 </li>
@@ -107,28 +108,42 @@
             <section class="cv-block" aria-label="Recent projects">
               <h2>Recent Projects</h2>
               <ul class="cv-list">
+                <li class="cv-list-item">
+                  <div class="cv-entry-top">
+                    <span class="cv-entry-title">Assessing Responsible AI</span>
+                    <span class="cv-chips"><span class="chip">2025 - Now</span></span>
+                  </div>
+                  <p class="cv-entry-preview">Research on what evidence an AI system should produce to count as responsible: explainability-based verification of machine unlearning, practical judgement as a complement to rule-based compliance, and workshops that put evaluation methods in the hands of researchers and companies.</p>
+                  <button type="button" class="cv-entry-hit" data-modal="m-assess" aria-label="Open details: Assessing Responsible AI"></button>
+                </li>
 
                 <li class="cv-list-item">
                   <div class="cv-entry-top">
-                    <span class="cv-entry-title">Datadrift in longterm deployments with thermal sensors</span>
+                    <span class="cv-entry-title">Standardization and compliance with the AI Act</span>
+                    <span class="cv-chips"><span class="chip">2024 - Now</span></span>
                   </div>
-                  <p class="cv-entry-preview">Collected, curated, and analyzed one of the largest thermal object-detection datasets for long-term drift assessment. Organized open challenges integrating metadata to improve robustness across seasons. Maintain public leaderboards and ongoing analyses to track and characterize performance degradation over time.</p>
+                  <p class="cv-entry-preview">I sit on the Danish AI standardization committee (S-855) and in CEN/CENELEC JTC 21, where I draft clause text for the European standard on evaluating computer-vision systems under the EU AI Act, and I organise workshops that connect academia and industry on putting responsible AI into practice.</p>
+                  <button type="button" class="cv-entry-hit" data-modal="m-aiact" aria-label="Open details: Standardization and compliance with the AI Act"></button>
                 </li>
-                
+
+                <li class="cv-list-item">
+                  <div class="cv-entry-top">
+                    <span class="cv-entry-title">Data drift in long-term thermal deployments</span>
+                    <span class="cv-chips"><span class="chip">2021 - Now</span></span>
+                  </div>
+                  <p class="cv-entry-preview">I built the annotation and curation pipeline behind a large-scale thermal object-detection dataset for long-term drift assessment, and I run the open challenge and public leaderboard built on it. The analyses track how performance degrades across seasons, weather and time of day.</p>
+                  <button type="button" class="cv-entry-hit" data-modal="m-drift" aria-label="Open details: Data drift in long-term thermal deployments"></button>
+                </li>
+
                 <li class="cv-list-item">
                   <div class="cv-entry-top">
                     <span class="cv-entry-title">Design of long-term data acquisition setups</span>
+                    <span class="cv-chips"><span class="chip">2019 - Now</span></span>
                   </div>
-                  <p class="cv-entry-preview">Designed and implemented vision sensor packages for autonomous systems in hazardous environments, including sewer-inspection robots, ROVs operating at depths exceeding 30 meters, and static long-term monitoring in ocean environments.</p>
+                  <p class="cv-entry-preview">I design vision sensor packages for autonomous systems in hazardous environments: sewer-inspection robots, ROVs working below 30 meters, and fixed stations that monitor the sea for months at a time.</p>
+                  <button type="button" class="cv-entry-hit" data-modal="m-acq" aria-label="Open details: Design of long-term data acquisition setups"></button>
                 </li>
-
-                <li class="cv-list-item">
-                  <div class="cv-entry-top">
-                    <span class="cv-entry-title">Standardization and Compliance with the AI-Act</span>
-                  </div>
-                  <p class="cv-entry-preview">Member of the Danish AI standardization committee (S-855) and CEN/CENELEC JTC 21, contributing to standards and guidelines for responsible AI deployment, with a focus on evaluation methods and metrics for computer vision in support of the EU AI Act. Organize workshops connecting academia and industry on operationalizing responsible AI.</p>
-                </li>
-
+              
               </ul>
             </section>
           </div>
@@ -172,13 +187,6 @@
               </div>
 
             </div>
-            <div class="skill-group">
-              <p class="skill-label">Website and links</p>
-              <span class="pill"><i class="fa fa-globe"></i><a href="https://oldmananders.github.io/"> OldManAnders.github.io/</a></span>
-              <span class="pill"><i class="fab fa-orcid"></i><a href="https://orcid.org/0000-0002-9330-522X"> 0000-0002-9330-522X</a></span>
-              <span class="pill"><i class="fab fa-github"></i><a href="https://github.com/OldManAnders"> /OldManAnders</a></span>
-            </div>
-
             <p class="skill-label">Education</p>
             <ul class="edu-list">
               <li>
@@ -209,7 +217,6 @@
             
             <p class="skill-label">Committees & Affiliations</p>
             <ul class="edu-list">
-
               <li>
                 <div class="edu-top">
                   <strong>CEN/CENELEC</strong>
@@ -233,9 +240,18 @@
                 </div>
                 <p class="edu-what">Fine-Grained Analysis Collaboratory </p>
               </li>
-
             </ul>
-
+            
+            <div class="skill-group">
+              <p class="skill-label">Interests</p>
+              <div class="skill-pills">
+                <span>3D-Printing</span>
+                <span>CAD Design</span>
+                <span>Micro-Electronics</span>
+                <span>SCUBA Diving</span>
+                <span>Domotization</span>
+              </div>
+            </div>
           </aside>
         </div>
 
@@ -243,12 +259,101 @@
         <dialog id="m-postdoc" class="modal" aria-labelledby="m-postdoc-t">
           <div class="modal-body">
             <div class="modal-head">
-              <h3 id="m-postdoc-t">PostDoc &middot; Aalborg University &amp; CAISA</h3>
+              <h3 id="m-postdoc-t">Postdoc &middot; Aalborg University &amp; CAISA</h3>
               <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
             </div>
             <div class="details-body">
-              <p>Here will go some details about the PostDoc position.</p>
-              <p>Please be patient, i am vibing my way to an understanding of front-end development</p>
+              <p>
+                My postdoc work continues my interest on how to measure whether a system is doing the right thing when faced with complex real-world scenarios.
+                Part of that work has been on specific usecases related to implementation of Responsible AI, in sensative contexts, 
+                where people are at risk of being harmed or are in vulnurable postions where privacy and dignity are paramount.
+                Another part of my work involves working on how to operationalize the AI Act for both industry and academia, 
+                Primarily questioning how we can translate ethical, societal and legal requirements into computable metrics. 
+                While retaining alignment with the human-centric values that many Responsible AI frameworks claim to support.
+              </p>
+              <figure class="details-figure details-figure--contain">
+                <img src="assets/img/D3A.jpg" alt="Speaking at the D3A 4.0 workshop, 2026" loading="lazy">
+                <center><figcaption>Giving a talk about how to operationalize the AI-Act for industry and academia at the D3A 4.0 workshop, 2026 </figcaption></center>
+              </figure>
+              <p>
+                At the sametime i get to take part of my schedule to work on designing and running vision-based data-collection setups for long-term deployments. 
+                I corrently do this as a part of a marine vision workpackage in the EU-funded LOTUS-PTO project, 
+                where I designed and build underwater vision setups that are exposed to the open ocean for prolonged periods, to asses the growth patterns of bio-fouling.
+              </p>
+              <figure class="details-figure details-figure--row">
+                <img src="assets/img/lotus-im1.jpg" alt="The LOTUS-PTO underwater imaging rig" loading="lazy">
+                <img src="assets/img/lotus-im3.png" alt="The LOTUS-PTO underwater imaging rig" loading="lazy">
+                <img src="assets/img/lotus-im2.jpg" alt="The LOTUS-PTO underwater imaging rig" loading="lazy">
+                <figcaption>The LOTUS-PTO underwater imaging rig, after running for 135 days in the open ocean without interruption, during which the frame, lense and anything submerged became overgrown with barnacles, seaweed and algae.</figcaption>  
+              </figure>
+              <p class="details-sub">Projects</p>
+              <ul class="details-list">
+                <li><strong>Computing Responsible AI</strong>. The AI Act asks that systems "<i>achieve an appropriate level of accuracy, robustness and cybersecurity...</i>".
+                However, when they are translated into measurable targets, important nuances can be lost. 
+                I work on trying to bridge that gap, while identifying which components get lost in translation.
+                The key is to identify which normative principles survive being made computable, and which
+                quietly change meaning or measure something else.<br>
+
+                In addition to computer-vision grounded research,I organize workshops and give talks with industry and academia, addressing the challenges
+                of translating normative principles and operationalizing them as measurable targets. More crucially,
+                trying to underline that adhering to a comparative benchmark does not mean that the system is actually
+                measuring the right thing,  and that a system can be compliant with the AI Act while still being misaligned with human values.
+
+                </li>
+
+                <li>
+                  <strong>REPAI (Responsible AI for Value Creation)</strong>, funded by the Poul Due Jensen
+                  Foundation (with KU and AU). I built and trained the models for real-world cases, defined how
+                  they were evaluated, and ran the work with the domain experts. I continued my PhD work on object recognition 
+                  in low-resolution thermal data, and worked on eldercare-visit summaries for Aalborg Municipality's care
+                  staff. The code, models and results from the harbour-front case were delivered to the
+                  harbour-safety authorities, along with the documentation and the public dataset; the
+                  eldercare track ran through workshops with care professionals.
+                </li>
+                <li>
+                  <strong>LOTUS-PTO (Laser-Textured Surfaces for Wave and Tidal Power Take-Off)</strong>, an
+                  EU consortium led by RISE (2025-2028). I designed and built the underwater imaging rig end
+                  to end: camera and optics, the RP2350 firmware and HTTP API controlling the illumination and
+                  the lens wiper, the capture and scheduling software, the processing tools and the housing. A
+                  first rig then ran a full 135-day season without any interruption, with the capture and
+                  storage pipeline holding up throughout.
+                </li>
+                <li>
+                  <strong>JAMBO</strong>, a study of the seabed in Jammerbugten, Nordjylland, looking at the
+                  impact of beam-trawl operations and classifying existing habitats. An interdisciplinary study,
+                  together with a team of marine biologists, where I ran the ROV
+                  surveys, built the annotation protocol and the tooling behind it, briefed the six
+                  annotators, and did the data collection behind the paper. The result is a 3,290-image
+                  dataset in which every image carries six independent labels, built so that annotator
+                  disagreement can be measured rather than assumed away.
+                </li>
+              </ul>
+
+              <p class="details-sub">Standardisation &amp; community</p>
+              <ul class="details-list">
+                <li>
+                  National expert in Dansk Standard Committee S-855 (AI) and in CEN/CENELEC JTC-21,
+                  WG3 (Engineering Aspects), where I write and rewrite clause text for the European
+                  standard on evaluating computer-vision systems.
+                </li>
+                <li>
+                  Organiser and speaker at the 2024 workshop on a Danish standard for computer-vision
+                  metrics and at the 2026 D3A workshop on operationalizing the AI Act in research and industry.
+                </li>
+                <li>Challenge organiser for RTIOD at RWS@WACV 2026.</li>
+                <li>Supervising semester projects in machine learning across the computer-engineering programmes at Aalborg University.</li>
+              </ul>
+
+              <div class="details-links">
+                <strong>Links:</strong>
+                <a href="https://repai.aau.dk/" target="_blank" rel="noopener">REPAI</a>
+                <a href="https://caisa.dk/personer" target="_blank" rel="noopener">CAISA</a>
+                <a href="https://vap.aau.dk/" target="_blank" rel="noopener">VAP lab</a>
+                <a href="https://lotus-pto.eu/" target="_blank" rel="noopener">LOTUS-PTO</a>
+                <a href="https://www.codabench.org/competitions/10954/" target="_blank" rel="noopener">RTIOD</a>
+                <a href="https://huggingface.co/datasets/vapaau/LTDv2" target="_blank" rel="noopener">LTDv2 Data</a>
+                <a href="https://huggingface.co/datasets/vapaau/jambo" target="_blank" rel="noopener">JAMBO data</a>
+              </div>
             </div>
           </div>
         </dialog>
@@ -259,8 +364,69 @@
               <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
             </div>
             <div class="details-body">
-              <p>Here will go some details about the PhD fellowship.</p>
-              <p>Please be patient, i am vibing my way to an understanding of front-end development</p>
+              <p>
+                The focus of my PhD, was to figure out what happends when object recognition algorithms leave the lab, 
+                and get exposed to the real-world under unconstrained conditions. 
+                Figuring out how the performance of these systems could be measured in a way that was meaningful 
+                outside the lab, and whether the models could be adapted to hold up under continuous data drift. 
+              </p>
+              <p>
+                Initially i contributed to the LTD dataset with object-detection annotation, curation and evaluation. 
+                Then i organized the Seasons in Drift challenge, designed the evaluation and ran the evaluation infrastructure. 
+                On the method side I developed weather inference so that thermal
+                detection could be conditioned on the meteorological conditions in the observed environment. The co-authored comparison
+                and survey work came out of the same period.
+              </p>
+
+              <figure class="details-figure details-figure--row">
+                <img src="assets/img/ltd-im1.jpg" alt="Thermal frame of a harbour front with pedestrians and cars" loading="lazy">
+                <img src="assets/img/ltd-im2.jpg" alt="Thermal frame of the same harbour front in different weather" loading="lazy">
+                <img src="assets/img/ltd-im3.jpg" alt="Thermal frame of the same harbour front in a third season" loading="lazy">
+                <figcaption>Three frames from the LTD dataset (CC-BY-4.0), the same environment in different seasons, weather and lighting conditions.</figcaption>
+              </figure>
+
+              <p class="details-sub">Notable Outputs</p>
+              <ul class="details-list">
+                <li>
+                  <strong>Seasons in Drift / LTD</strong> (NeurIPS 2021 Datasets & Benchmarks): the
+                  annotation and curation pipeline behind 298 hours of thermal video over eight months,
+                  later extended to 1,689 clips across 188 days with 1.07M annotated frames and 6.87M boxes,
+                  plus the weather metadata that lets a change in performance be explained.
+                </li>
+                <li>
+                  <strong>ChaLearn LAP Seasons in Drift Challenge</strong> (ECCV 2022 Workshops): I organised a challenge 
+                  on the LTD dataset, designed to assess how well object detection models hold up under continous data drift, 
+                  and designed the evaluation protocol to highlight how performance drifts across seasons and correlated performance with weather conditions.
+                   
+                </li>
+                <li>
+                  <strong>Who Cares about the Weather?</strong> (<em>Applied Sciences</em>, 2023): I
+                  developed the weather-inference method for weather-aware thermal detection and authored the paper.
+                  Aiming to embed a projected representation of the weather conditions both directly (forcing the model to adapt) 
+                  and indirectly (providing a condition vector with a learnable weighting scheme) to improve detection performance in low-resolution thermal data.
+                </li>
+                <li>
+                  <strong>Video Transformers: A Survey</strong> (<em>IEEE TPAMI</em>, 2023):
+                  Co-authored the first survey on transformer architectures when applied to high-dimensional video data, 
+                  where both strong temporal and spatial attention mechanisms are discussed. Moreover the different approaches to address them and 
+                  their associated computational complexities are compared compared.
+                </li>
+                <li>
+                  <strong>Joint Semanstic Segmentation and Super-Resolution</strong> (<em>LNCS CAIP</em>, 2023 and <em>WACW-W</em>, 2021): 
+                  Co-authored two conference papers focused on joint-learning of semantic segmentation and super-resolution, 
+                  where the goal is to improve the performance of super-resolution in contexts where there exists no high-resolution groundtruth, 
+                  and further leverage that to improve semantic understanding.
+                </li>
+              </ul>
+
+              <div class="details-links">
+                <strong>Links:</strong>
+                <a href="https://vap.aau.dk/ltd" target="_blank" rel="noopener">LTD dataset</a>
+                <a href="https://huggingface.co/datasets/vapaau/LTDv2" target="_blank" rel="noopener">LTDv2</a>
+                <a href="https://doi.org/10.54337/aau561828875" target="_blank" rel="noopener">PhD thesis</a>
+                <a href="https://doi.org/10.3390/app131810295" target="_blank" rel="noopener">Weather paper</a>
+                <a href="https://doi.org/10.1109/TPAMI.2023.3243465" target="_blank" rel="noopener">Video Transformers</a>
+              </div>
             </div>
           </div>
         </dialog>
@@ -271,14 +437,125 @@
               <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
             </div>
             <div class="details-body">
-              <p>Here will go some details about the research assistant position.</p>
-              <p>Please be patient, i am vibing my way to an understanding of front-end development</p>
+              <p>
+                In the Autonomous Sewer Inspection Robot (ASIR) project, I worked on buildingt a prototype sensor package 
+                that could operate on a small robot in a sewer pipe for extended periods of time. The challenge was to design a system that could 
+                acquire, process and store data in real time, while being constrained by the limited power and space available on the robot. 
+                I designed the prototype vision-data acquisition setup from the camera
+                selection, the mounting and enclosure, the capture and storage software, and the on-board
+                processing integration and tested it in the lab until it could acquire, process and
+                store footage in real time.
+              </p>
+              <figure class="details-figure">
+                <img src="assets/img/asir-robot.jpg" alt="The ASIR sewer inspection robot inside a pipe" loading="lazy">
+                <figcaption>The ASIR platform inside a sewer pipe. Photo: ASIR project, Aalborg University.</figcaption>
+              </figure>
+              <p>
+                While joining the ASIR project i also co-authored two papers from projects i did during the master's degree.
+                First being about multi-modal heartbeat-rate estimation from rgb and thermal video, and second being about affect-based trust estimation in human-robot interaction.
+              </p>
+              <p class="details-sub">Notable Outputs</p>
+              <ul class="details-list">
+                <li>
+                  <strong>Affect-Based Trust Estimation</strong> (<em>IEEE HRI</em>, 2020): 
+                  Co-authored a paper on affect-based trust estimation in human-robot interaction, where participants would interact with 
+                  a robotic arm displaying different movement behavior and interaction patterns while their affective state was measured to 
+                  estimate their physiological response  to their percieved trust in the robot.
+                </li>
+                <li>
+                  <strong>Multi-Modal Heartbeat Estimation</strong> (<em>ICMV</em>, 2019): 
+                  Co-authored a paper on heartbeat-rate estimation from multi-modal video, where we fused visual and motion-based information.
+                  The method showed that a combination of motion and visual based information beats out unimodal approaches and that decomposing 
+                  the information into different sampling regimes could result in a more robust estimation of the heartbeat rate.
+                </li>
+                <li>
+                  <strong>3D Sensors for Sewer Inspection</strong> (<em>Sensors</em>, 2021): 
+                  Co-authored the quantitative comparison of depth sensing for pipe inspection, where the robustness of compact 3D sensors 
+                  were evaluated in hostile conditions where there is limited visibility, reflective surfaces, dynamic lighting, contigous uniform feature-poor surfaces.
+                </li>
+              </ul>
+
+              <div class="details-links">
+                <strong>Links:</strong>
+                <a href="https://asir.create.aau.dk" target="_blank" rel="noopener">ASIR project</a>
+                <a href="https://doi.org/10.3390/s21072553" target="_blank" rel="noopener">Asir paper</a>
+                <a href="https://doi.org/10.1145/3371382.3378327" target="_blank" rel="noopener">Trust paper</a>
+                <a href="https://doi.org/10.1117/12.2523385" target="_blank" rel="noopener">Heartbeat paper</a>
+              </div>
+            </div>
+          </div>
+        </dialog>
+        <dialog id="m-drift" class="modal" aria-labelledby="m-drift-t">
+          <div class="modal-body">
+            <div class="modal-head">
+              <h3 id="m-drift-t">Data drift in long-term thermal deployments</h3>
+              <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
+            </div>
+            <div class="details-body">
+              Content is still WIP, here is some links for now:
+              <div class="details-links">
+                <a href="https://vap.aau.dk/ltd" target="_blank" rel="noopener">LTD dataset</a>
+                <a href="https://huggingface.co/datasets/vapaau/LTDv2" target="_blank" rel="noopener">LTDv2</a>
+                <a href="https://github.com/MarcoParola/RTIOD" target="_blank" rel="noopener">RTIOD challenge</a>
+                <a href="https://www.codabench.org/competitions/10954/" target="_blank" rel="noopener">Leaderboard</a>
+              </div>
+            </div>
+          </div>
+        </dialog>
+
+        <dialog id="m-acq" class="modal" aria-labelledby="m-acq-t">
+          <div class="modal-body">
+            <div class="modal-head">
+              <h3 id="m-acq-t">Design of long-term data acquisition setups</h3>
+              <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
+            </div>
+            <div class="details-body">
+              Content is still WIP, here is some links for now:
+              <div class="details-links">
+                <a href="https://asir.create.aau.dk" target="_blank" rel="noopener">ASIR</a>
+                <a href="https://github.com/OldManAnders/lotus-pto-camera" target="_blank" rel="noopener">LOTUS-PTO camera repo</a>
+                <a href="https://huggingface.co/datasets/vapaau/jambo" target="_blank" rel="noopener">JAMBO dataset</a>
+                <a href="https://www.thejot.net/article-preview/?show_article_preview=1581" target="_blank" rel="noopener">ROV cameras paper</a>
+              </div>
+            </div>
+          </div>
+        </dialog>
+
+        <dialog id="m-aiact" class="modal" aria-labelledby="m-aiact-t">
+          <div class="modal-body">
+            <div class="modal-head">
+              <h3 id="m-aiact-t">Standardization &amp; AI Act compliance</h3>
+              <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
+            </div>
+            <div class="details-body">
+              Content is still WIP, here is some links for now:
+              <div class="details-links">
+                <a href="https://www.ds.dk/da/nyhedsarkiv/2026/04/endnu-en-ai-standard-til-ai-forordningen-er-kommet-paa-offentlig-hoering" target="_blank" rel="noopener">Dansk Standard news</a>
+                <a href="https://d3aconference.dk/tools-and-methods-for-operationalizing-the-ai-act-in-research-and-industry" target="_blank" rel="noopener">D3A workshop</a>
+                <a href="https://caisa.dk/personer" target="_blank" rel="noopener">CAISA</a>
+              </div>
+            </div>
+          </div>
+        </dialog>
+
+        <dialog id="m-assess" class="modal" aria-labelledby="m-assess-t">
+          <div class="modal-body">
+            <div class="modal-head">
+              <h3 id="m-assess-t">Assessing Responsible AI</h3>
+              <button type="button" class="modal-close" autofocus aria-label="Close">&times;</button>
+            </div>
+            <div class="details-body">
+              Content is still WIP, here is some links for now:
+              <div class="details-links">
+                <a href="https://arxiv.org/abs/2411.13332" target="_blank" rel="noopener">XAI for unlearning</a>
+                <a href="https://doi.org/10.1007/978-3-032-16886-3_5" target="_blank" rel="noopener">A&Phi; paper</a>
+                <a href="https://d3aconference.dk/tools-and-methods-for-operationalizing-the-ai-act-in-research-and-industry" target="_blank" rel="noopener">D3A workshop</a>
+                <a href="https://aicentre.dk/events/20241218-workshop-danish-standard-for-computer-vision-metrics" target="_blank" rel="noopener">Metrics workshop</a>
+              </div>
             </div>
           </div>
         </dialog>
       </div>
-    </main>
-
     <footer>
       <div class="wrap">
         &copy; <span id="y"></span> Anders Skaarup Johansen - Get in touch:
@@ -287,6 +564,6 @@
       </div>
     </footer>
 
-    <script src="assets/js/main.js?v=2"></script>
+    <script src="assets/js/main.js?v=3"></script>
   </body>
 </html>

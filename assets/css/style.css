@@ -420,8 +420,12 @@ h3 {
 
 /* --------  7. Detail pop-ups  native <dialog>, no JS library needed   --------*/
 dialog.modal {
-  width: min(640px, 92vw);
-  max-height: min(86vh, 780px);
+  /* As wide as the CV sheet it covers; the height follows the content. The
+     cap lives on .modal-body below, so a long detail scrolls instead of
+     growing past the viewport. */
+  width: min(210mm, 94vw);
+  max-width: none;
+  max-height: none;
   padding: 0;
   border: 1px solid var(--border-strong);
   border-radius: 12px;
@@ -435,11 +439,16 @@ dialog.modal::backdrop {
   backdrop-filter: blur(2px);
 }
 
-/* Padding + scroll live here so backdrop clicks still hit the dialog itself */
+/* Padding + scroll live here so backdrop clicks still hit the dialog itself.
+   The cap (A4, or the viewport when that is shorter) keeps a long detail
+   scrollable; a short one ends where its content ends. */
 .modal-body {
+  display: flex;
+  flex-direction: column;
+  max-height: min(297mm, 92vh);
+  max-height: min(297mm, 92dvh);
   padding: 18px 20px 20px;
-  max-height: min(86vh, 780px);
-  overflow: auto;
+  overflow: hidden;
 }
 
 .modal-head {
@@ -514,7 +523,11 @@ dialog.modal::backdrop {
   padding-left: 4px;
 }
 
+/* Sits below the fixed title bar and scrolls when the detail is taller than the cap. */
 .details-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow: auto;
   color: var(--fg);
   font-size: .94rem;
   line-height: 1.4;
@@ -683,16 +696,19 @@ main.wrap:has(> .cv-paper) {
 }
 
 .cv-paper .cv-avatar {
-  width: 80px;
-  height: 80px;
-  /* Grow the portrait up and right into the sheet's margin. A transform does
-     not take part in layout, so the header keeps its footprint and the
-     name/role/pills do not move. Scale is the only knob to change. */
-  transform: scale(1.25);
-  transform-origin: bottom left;
+  /* Real size, not a transform: print engines flatten transforms (Chromium's
+     PDF backend drops the vertical scale) and transformed paint can land
+     outside the printable page box. The 100px box sets the header height, so
+     the portrait and page geometry stay identical on screen and on paper. */
+  width: 100px;
+  height: 100px;
+  align-self: flex-start;
 }
 
-@media (max-width: 700px) {
+/* Screen-only: printing must never pick up the phone layout. Firefox's A4
+   printable area is ~698 CSS px at its default margins, which would otherwise
+   trip this breakpoint and stack the portrait above the name on paper. */
+@media screen and (max-width: 700px) {
   .cv-paper .cv-header {
     flex-direction: column-reverse;
     /* picture on top, text below on small screens */
@@ -716,7 +732,7 @@ main.wrap:has(> .cv-paper) {
   grid-template-columns: minmax(0, 1.75fr) minmax(180px, .85fr);
 }
 
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .cv-layout {
     grid-template-columns: 1fr;
   }
@@ -924,7 +940,7 @@ main.wrap:has(> .cv-paper) {
   min-width: 0;
 }
 
-@media (max-width: 700px) {
+@media screen and (max-width: 700px) {
   .cv-side {
     border-left: none;
     border-top: 1px solid var(--border);
@@ -1223,10 +1239,9 @@ footer a:hover {
 @media print {
   @page {
     size: A4;
-    /* Right margin is 4mm, not 1cm: the sheet re-creates the missing 6mm as
-       padding below, so the enlarged portrait can overhang the text column
-       without Chromium's shrink-to-page-width scaling the whole CV down. */
-    margin: 1cm 4mm 1cm 1cm;
+    /* Symmetric 1cm: this is the same as the sheet's screen padding, so the
+       printed content box is exactly the on-screen sheet's content box. */
+    margin: 1cm;
   }
   /* Hide chrome that is useless on paper */
   header.site, .toolbar, .no-print, footer {
@@ -1254,14 +1269,12 @@ footer a:hover {
     width: auto;
     min-height: auto;
     /* the A4 floor is a screen thing: on paper the page itself is the A4 */
-    /* @page margin replaces the sheet's own 1cm padding; the 6mm right
-       padding is the overhang pocket for the portrait. */
-    padding: 0 6mm 0 0;
+    /* @page margin replaces the sheet's own 1cm padding. */
+    padding: 0;
   }
-  /* Keep the two columns on paper even though the printable width is below
-     the 700px screen stacking breakpoint. Floats instead of grid: browsers
-     fragment floats across pages, while a grid container even a hair taller
-     than the page is moved whole and leaves the header alone on page 1. */
+  /* Keep the two columns on paper. Floats instead of grid: browsers fragment
+     floats across pages, while a grid container even a hair taller than the
+     page is moved whole and leaves the header alone on page 1. */
   .cv-layout {
     display: block;
     position: relative;
@@ -1329,6 +1342,10 @@ footer a:hover {
      same page even when the browser prints with its own header/footer or a
      larger margin. These trims buy ~8 mm without touching screen styles. */
   .cv-paper .cv-header {
+    /* Belt and braces: a screen breakpoint must never stack the portrait
+       above the name on paper. */
+    flex-direction: row;
+    align-items: center;
     margin-bottom: 4px;
   }
   .cv-paper .cv-header h1 {
