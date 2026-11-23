@@ -3,40 +3,45 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
     <title>Curriculum Vitae</title>
     <meta name="description" content="Curriculum vitae — compact overview, with detail in pop-ups.">
     <link rel="icon" type="image/png" href="assets/img/frog-icon.png">
+    <link rel="preload" href="assets/fonts/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="preload" href="assets/fonts/jetbrains-mono-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    <link rel="stylesheet" href="assets/css/style.css?v=14">
+    <link rel="stylesheet" href="assets/css/style.css?v=18">
   </head>
   <body>
+
+    <a class="skip" href="#main">Skip to content</a>
+
     <header class="site">
-      <div class="wrap nav">
-        <a class="brand" href="index.html">
-          <span class="brand-mark"><img src="assets/img/frog-icon.png" alt="Frog logo" width="32" height="32"></span> Curriculum Vitae
-        </a>
-        <nav class="nav-links" aria-label="Primary">
-          <a href="index.html">About</a>
-          <a href="cv.html" aria-current="page">CV</a>
-          <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">GitHub</a>
+      <div class="doc bar">
+        <a class="monogram" href="index.html" aria-label="ASJ — home">ASJ</a>
+        <span class="bar-note">Computer vision · evaluation · field deployments</span>
+        <nav class="contents" aria-label="Sheets">
+          <a class="sheet" href="index.html"><span class="sn">01</span>About</a>
+          <a class="sheet" href="cv.html" aria-current="page"><span class="sn">02</span>CV</a>
         </nav>
       </div>
     </header>
 
-    <div class="toolbar no-print" role="toolbar" aria-label="CV controls">
-      <button type="button" onclick="window.print()">
-        <i class="fas fa-print"></i> Print
-      </button>
-      <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">
-        <i class="fas fa-graduation-cap"></i> Google Scholar
-      </a>
-      <a href="https://vbn.aau.dk/en/persons/asjo/" target="_blank" rel="noopener">
-        <i class="fas fa-building-columns"></i> AAU profile
-      </a>
-    </div>
+    <main id="main" class="wrap">
 
-    <main class="wrap">
-      <div class="cv-paper">
+      <div class="toolbar no-print" role="toolbar" aria-label="CV controls">
+        <button type="button" onclick="window.print()">
+          <i class="fas fa-print"></i> Print
+        </button>
+        <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&amp;hl=en&amp;oi=ao" target="_blank" rel="noopener">
+          <i class="fas fa-graduation-cap"></i> Google Scholar
+        </a>
+        <a href="https://vbn.aau.dk/en/persons/asjo/" target="_blank" rel="noopener">
+          <i class="fas fa-building-columns"></i> AAU profile
+        </a>
+      </div>
+
+<div class="cv-paper">
         <div class="cv-header">
           <div class="cv-header-main">
             <h1>Anders Skaarup Johansen</h1>
@@ -556,14 +561,26 @@
           </div>
         </dialog>
       </div>
-    <footer>
-      <div class="wrap">
-        &copy; <span id="y"></span> Anders Skaarup Johansen - Get in touch:
-        <i class="fas fa-envelope"></i><a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a> or
-        <i class="fab fa-linkedin"></i><a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a>
-      </div>
-    </footer>
 
-    <script src="assets/js/main.js?v=3"></script>
+    </main>
+
+<footer class="colophon">
+  <div class="doc">
+    <div class="colophon-row">
+      <img class="frog" src="assets/img/frog-icon.png" alt="" width="36" height="36" aria-hidden="true">
+      <p>© <span id="y">2026</span> Anders Skaarup Johansen<br>
+        <a class="colophon-links">
+          <a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a> ·
+          <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">GitHub</a> ·
+          <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a> ·
+          <a href="https://orcid.org/0000-0002-9330-522X" target="_blank" rel="noopener">ORCID</a> ·
+          <a href="https://www.linkedin.com/in/andersskaarupjohansen/" target="_blank" rel="noopener">LinkedIn</a>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+    <script src="assets/js/main.js?v=4"></script>
   </body>
 </html>

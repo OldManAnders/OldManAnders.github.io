@@ -1,115 +1,227 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>ASJ - About</title>
-<meta name="description" content="Anders Skaarup Johansen · Postdoc at Aalborg University, computer vision and responsible AI.">
+<meta name="color-scheme" content="light">
+<title>Anders Skaarup Johansen — computer vision &amp; evaluation</title>
+<meta name="description" content="Anders Skaarup Johansen · Postdoc at Aalborg University and the National Center for AI in Society. Computer vision outside the lab, long-term field deployments, and evaluation that measures degradation.">
 <link rel="icon" type="image/png" href="assets/img/frog-icon.png">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="assets/css/style.css?v=11">
+
+<link rel="preload" href="assets/fonts/source-serif-4-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="assets/fonts/jetbrains-mono-normal-latin.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="assets/css/style.css?v=18">
 </head>
 <body>
+
+<a class="skip" href="#main">Skip to content</a>
+
 <header class="site">
-  <div class="wrap nav">
-    <a class="brand" href="index.html"><span class="brand-mark"><img src="assets/img/frog-icon.png" alt="Frog logo" width="32" height="32"></span> About Me</a>
-    <nav class="nav-links" aria-label="Primary">
-      <a href="index.html" aria-current="page">About</a>
-      <a href="cv.html">CV</a>
-      <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">GitHub</a>
+  <div class="doc bar">
+    <a class="monogram" href="index.html" aria-label="ASJ — home">ASJ</a>
+    <span class="bar-note">Computer vision · evaluation · field deployments</span>
+    <nav class="contents" aria-label="Sheets">
+      <a class="sheet" href="index.html" aria-current="page"><span class="sn">01</span>About</a>
+      <a class="sheet" href="cv.html"><span class="sn">02</span>CV</a>
     </nav>
   </div>
 </header>
 
-<main class="wrap">
-  <section class="about">
-    <h1>Who am I?</h1>
-    <div class="about-row">
-      <img class="cv-avatar" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" loading="lazy" onerror="this.style.display='none'">
-      <div class="about-text">
-        <h2>Anders Skaarup Johansen</h2>
-        <p class="lead">I'm a computer vision researcher and a hobbyist tinkerer, who likes to figure out how things work, and use that knowledge to build something new. 
-                My research has focused on how state-of-the-art computer vision systems perform in real-world environments, and if it aligns with human values. 
+<main id="main" class="doc">
+
+  <!-- ===================== Masthead ===================== -->
+  <div class="masthead">
+    <div class="mh-id">
+      <img class="portrait" src="assets/img/profile.jpg" alt="Portrait of Anders Skaarup Johansen" width="125" height="125">
+      <div class="mh-name">
+        <h1>Anders Skaarup<br>Johansen</h1>
       </div>
     </div>
-    <div class="pill-row">
-      <span class="pill"><i class="fab fa-github"></i> <a href="https://github.com/OldManAnders">/OldManAnders</a></span>
-      <span class="pill"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></span>
-      <span class="pill"><i class="fas fa-graduation-cap"></i> <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&hl=en&oi=ao">Google Scholar</a></span>
-      <span class="pill"><i class="fa-brands fa-orcid"></i> <a href="https://orcid.org/0000-0002-9330-522X">ORCID</a></span>
-    </div>
+
+    <p class="role">Postdoc · Aalborg University <i>(AAU)</i> · National Center for AI in Society <i>(CAISA)</i></p>
+
+    <p class="masthead-meta">
+      <span>Aalborg, DK</span>
+      <span>Postdoc since <b>2024</b></span>
+      <span>ORCID <b>0000-0002-9330-522X</b></span>
+    </p>
+
+    <p class="lede">
+      I'm a computer vision researcher and a hobbyist tinkerer, who likes to figure out how things work, and use that to build something new. 
+      I've spent most of my career in academia, working on computer-vision systems, particularly object-centric tasks. 
+      The more time i spend the more i realise that many benchmarks and evaluation practices do not align that well with the real-world. 
+      So i have found myself drifting more into questioning how we evaluate and implement systems in a manner where we can actually measure if they do what they promise, 
+      and figure out how we can assure that they do it in a way that has atleast some degree of allignment with our human values.
+    </p>
+
+    <figure class="masthead-figure">
+      <picture>
+        <!-- wide: the plate sits in the right column, cropped to the masthead height -->
+        <source srcset="assets/img/D3A-slim.jpg" media="screen and (min-width: 1300px)">
+        <!-- narrow/mobile (and print): native 2:1 plate stacked under the lede -->
+        <img src="assets/img/D3A.jpg" alt="A steel deployment frame, thick with algae and shellfish, standing on a wet dock after recovery." width="947" height="387" loading="lazy">
+      </picture>
+      <figcaption><span class="fign">Talk at Danish Digitalization, Data Science and AI Conference</span><br>Giving the opening talk at the D3A workshop named "Tools and methods for operationalizing the AI-Act in research and industry" which focused on how to adhere and implement the AI-Act in practice.</figcaption>
+    </figure>
+  </div>
+
+  <!-- ===================== 01 My Work ===================== -->
+  <section class="section" aria-labelledby="work">
+    <p class="rail"><b>My Work</b>Research Efforts</p>
+    <h2 id="work">What my research currently focuses on</h2>
+    <article class="strand">
+      <div class="strand-text">
+        <h3>Computing 'responsible AI'</h3>
+        <p>
+          Most of my work as a postdoc has been on the Responsible AI for Value Creation (REPAI) project, where i worked on developing robust thermal object-detection algorithms for long-term deployments for harborfront safety, 
+          and the implementation of patients and healthcare workers in the eldercare industry. My work continued at CAISA, however focusing more on the high-level evaluation and compliance level, 
+          with evaluation practices and performance assessment, while contributing as a national expert to development of technical standards to support the AI-Act (JTC21).
+        </p>
+        <p class="links">
+          <a href="https://caisa.dk/en" target="_blank" rel="noopener">CAISA</a>
+          <a href="https://vbn.aau.dk/en/projects/responsible-ai-for-value-creation/" target="_blank" rel="noopener">REPAI</a>
+          <a href="https://www.ds.dk/da/fagomraader/it-og-digitalisering/kunstig-intelligens" target="_blank" rel="noopener">Dansk Standard, AI</a>
+          <a href="https://jtc21.eu/" target="_blank" rel="noopener">CEN/CENELEC JTC 21</a>
+        </p>
+      </div>
+      
+      <div class="figures figures">
+        <figure class="single">
+          <img src="assets/img/rect1.png" alt="tooltip" loading="lazy" width="1350" height="800">
+          <figcaption><span class="fign">A hopeful solution to the problem of developing responsible AI</span><br> An oversimplified interface that illustrates that models should be built responsibly, 
+          and report information that is context informed and ensure alignment with the systems intended purpose.<br><i>Note: a simple python package will never solve this</i></figcaption>
+        </figure>
+      </div>
+
+    </article>
+    <article class="strand">
+      <div class="strand-text">
+        <h3>Long-term image acquisition in marine environments</h3>
+        <p>Developing the hardware/software stack for continous capture of high-resolution images of laser-engraved steel, to track and analyse the growth patterns of biofouling.
+          With operational robustness being the primary focus, ensuring that loss of power or connection between hardware and server doesn't result in the collapse of the data-acquisition loop.
+          While 100% uptime is a dream in hazardous environments, effective recovery and data processing/storage can allow you to minimize the impact of data corruption or operational distruptions.
+        </p>
+        <p class="links">
+          <a href="https://lotus-pto.eu/" target="_blank" rel="noopener">LOTUS-PTO Project</a>
+          <a href="https://github.com/OldManAnders/lotus-pto-camera" target="_blank" rel="noopener">LOTUS-PTO Camera Repo</a>
+          
+        </p>
+      </div>
+
+      <div class="figures figures--pair">
+        <figure class="plate">
+          <img src="assets/img/lotus-im1.jpg" alt="A steel deployment frame, thick with algae and shellfish, standing on a wet dock after recovery." loading="lazy" width="1066" height="853">
+          <figcaption><span class="fign">LOTUS-PTO Camera rig</span><br> Autonomous tracking of real-world biofouling. Still operational after 135 days in the ocean.</figcaption>
+        </figure>
+        <figure class="plate">
+          <img src="assets/img/lotus-im3.png" alt="A picture of the submerged elements seen from the camera during deployment" loading="lazy" width="1350" height="1080">
+          <figcaption><span class="fign">In-situ image capture</span><br> Continous acquisition of high-resolution images of several submerged samples.</figcaption>
+        </figure>
+      </div>
+    </article>
+
+    <article class="strand">
+      <div class="strand-text">
+        <h3>Evaluation of long-term thermal drift</h3>
+        <p>Part of the continued work on this is focused on organising challenges, competitions and benchmarks around long-term thermal imaging, 
+          from ChaLearn LAP and RTIOD on Codabench to the LTDv2 dataset both have been run on. The goal remains the same: 
+          promote work on robustness that can handle the drastic changes in visual appearance across time. 
+          When your image effectively inverts overnight, in a slow gradual manner, fitting to a mean representation of an object is no longer an option.
+        </p>
+      </div>
+
+      <div class="figures figures--pair">
+        <figure class="plate">
+          <img src="assets/img/ltd-im3.jpg" alt="A frame from the LTD thermal dataset" loading="lazy" width="1066" height="853">
+          <figcaption><span class="fign">Longterm Thermal Drift</span><br> A dataset designed to evaluate how well models perform during long-term deployments.</figcaption>
+        </figure>
+        <figure class="plate">
+          <img src="assets/img/ltd-im2.jpg" alt="tooltip" loading="lazy" width="1350" height="1080">
+          <figcaption><span class="fign">Same scene, different day</span><br> In many climates, thermal object detectors need to robust to a drastic change in visual apperance</figcaption>
+        </figure>
+      </div>
+      </div>
+    </article>
   </section>
 
-  <h3>What I'm working on</h3>
-  <div class="grid cols2">
-    <div class="card">
-      <h3><i class="fas fa-microscope" style="color:var(--accent)"></i> Responsible use of AI</h3>
-      <p>Adapting ethical, societal and legal requirements into computable metrics for public and private sector evaluation, 
-      at the National Center for AI in Society. As well as practical use-cases as a part of the Responsible AI for Value Creation (REPAI) project.</p>
-      <div class="card-links">
-        <a href="https://caisa.dk/en" target="_blank" rel="noopener">CAISA</a>
-        <a href="https://vbn.aau.dk/en/projects/responsible-ai-for-value-creation/" target="_blank" rel="noopener">REPAI</a>
-      </div>
-    
-    </div>
-      <div class="card">
-      <h3><i class="fas fa-fish" style="color:var(--accent)"></i> Underwater Image-analysis</h3>
-      <p>Researching and developing a camera setup for underwater imaging and analysis, with the goal of mapping the rate of biofouling on underwater structures. Trying to maintain and ensure robust image capture for long-term marine deployments.</p>
-      <div class="card-links">
-        <a href="https://lotus-pto.eu/" target="_blank" rel="noopener">LOTUS-PTO</a>
-      </div>
-    </div>
-  </div>
+  <!-- ===================== 02 Datasets ===================== -->
+  <section class="section" aria-labelledby="data">
+    <p class="rail"><b>Data</b>Ready for download</p>
 
-  <div class="grid cols2" style="margin-top:16px">
-    <div class="card">
-      <h3><i class="fas fa-clipboard-list" style="color:var(--accent)"></i> Standardization</h3>
-      <p>National Expert at Dansk Standard (S-855) &amp; CEN/CENELEC JTC21, working on evaluation of computer-vision systems to support the AI Act, and ensuring accurate assessment of system performance. While contributing to the academic discussion surrounding the feasibility of closed-set evaluation practices.</p>
-      <div class="card-links">
-        <a href="https://www.ds.dk/da/fagomraader/it-og-digitalisering/kunstig-intelligens" target="_blank" rel="noopener">DS - AI Udvalg</a>
-        <a href="https://jtc21.eu/" target="_blank" rel="noopener">CEN/CENELEC JTC21</a>
-      </div>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-database" style="color:var(--accent)"></i> Datasets &amp; Benchmarks</h3>
-      <p>Building and maintaining long-term datasets, trying to measure degradation of system performance over time and evaluate how robust these systems are when exposed to real-world degradation of the input image, both in the short and long term.</p>
-      <div class="card-links">
-        <a href="https://www.kaggle.com/datasets/ivannikolov/longterm-thermal-drift-dataset" target="_blank" rel="noopener">LTD Dataset</a>
-        <a href="https://huggingface.co/datasets/vapaau/LTDv2" target="_blank" rel="noopener">LTDv2 Dataset</a>
-        <a href="https://huggingface.co/datasets/vapaau/jambo" target="_blank" rel="noopener">JAMBO Dataset</a>
-        <a href="https://chalearnlap.cvc.uab.es/challenge/51/description/" target="_blank" rel="noopener">ChaLearn Challenge</a>
-        <a href="https://www.codabench.org/competitions/10954/" target="_blank" rel="noopener">RTIOD Challenge</a>
-      </div>
-    </div>
-  </div>
+    <h2 id="data">Datasets &amp; benchmarks</h2>
+    <p class="section-intro">Long-term data, released so that degradation gets measured rather than assumed.</p>
 
-  <h3>What do i do outside of work</h3>
-  <div class="grid cols2">
-    <div class="card">
-      <h3><i class="fas fa-cube" style="color:var(--accent)"></i> 3D printing</h3>
-      <p>Mostly functional prints: brackets, enclosures and mounts for camera rigs and the homelab. Currently in a functional-print phase, where every print has to solve an actual problem.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-server" style="color:var(--accent)"></i> Homelab</h3>
-      <p>A Proxmox host running the services I use daily, plus storage and compute for small experiments. Equal parts useful and an excuse to learn how the stack underneath everything works.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-microchip" style="color:var(--accent)"></i> Electronics</h3>
-      <p>Mostly hobbyist tinkering with microcontrollers and sensors, but also building custom camera rigs for research projects. I enjoy the challenge of making a system work in the real world.</p>
-    </div>
-    <div class="card">
-      <h3><i class="fas fa-water" style="color:var(--accent)"></i> Diving</h3>
-      <p>Exploring underwater environments and marine ecosystems. I enjoy the challenge of navigating and documenting the diverse life forms and geological features found in the ocean.</p>
-    </div>
-  </div>
+    <ul class="ruled section-list">
+      <li>
+        <a class="name" href="https://www.kaggle.com/datasets/ivannikolov/longterm-thermal-drift-dataset" target="_blank" rel="noopener">LTD — Long-Term Thermal Drift</a>
+        <span class="tag">Kaggle</span>
+      </li>
+      <li>
+        <a class="name" href="https://huggingface.co/datasets/vapaau/LTDv2" target="_blank" rel="noopener">LTDv2</a>
+        <span class="tag">Hugging Face</span>
+      </li>
+      <li>
+        <a class="name" href="https://huggingface.co/datasets/vapaau/jambo" target="_blank" rel="noopener">JAMBO</a>
+        <span class="tag">Hugging Face</span>
+      </li>
+      <li>
+        <a class="name" href="https://chalearnlap.cvc.uab.es/challenge/51/description/" target="_blank" rel="noopener">ChaLearn Challenge</a>
+        <span class="tag">ChaLearn LAP</span>
+      </li>
+      <li>
+        <a class="name" href="https://www.codabench.org/competitions/10954/" target="_blank" rel="noopener">RTIOD Challenge</a>
+        <span class="tag">Codabench</span>
+      </li>
+    </ul>
+  </section>
 
-  <h3>GitHub Activity</h3>
-  <div id="contributions"></div>
-  <div id="gh-updated" class="repo-summary"></div>
+  <!-- ===================== 03 Off the clock ===================== -->
+  <section class="section" aria-labelledby="off">
+    <p class="rail"><b>After Hours</b>What i do for fun</p>
+
+    <h2 id="off">Interests and Hobbies</h2>
+    <p class="section-intro">Sometimes it is nice to just get your hands into something that is way more practical and has direct impact on ones own life.</p>
+
+    <ul class="ruled ruled--stacked section-list">
+      <li><b class="name">3D printing</b><span class="note">Functional prints, tools and an unhealthy gridfinity obsession.</span></li>
+      <li><b class="name">Homelab</b><span class="note">A Proxmox host running an array of selfhosted services, and compute.</span></li>
+      <li><b class="name">Electronics</b><span class="note">Microcontrollers, sensors, and hardware to fix previously non-existent problems</span></li>
+      <li><b class="name">Diving</b><span class="note">Sometimes you just want to dive into the wild and be chased by a triggerfish.</span></li>
+      <li><b class="name">Amateur Photography</b><span class="note">After years of analysing images, it was about time i learn how to take a good one.</span></li>
+    </ul>
+  </section>
+
+  <!-- ===================== 04 Activity ===================== -->
+  <section class="section" aria-labelledby="activity">
+    <p class="rail"><b>Github</b>Trying to commit to something</p>
+
+    <h2 id="activity">Activity</h2>
+    <div id="contributions" class="section-wide">
+      <p class="strip-note">Loading public commit history from GitHub…</p>
+    </div>
+    <noscript><p class="strip-note">This strip is drawn from the GitHub API and needs JavaScript.</p></noscript>
+  </section>
 
 </main>
 
-<footer><div class="wrap">© <span id="y"></span> Anders Skaarup Johansen - Get in touch: <i class="fas fa-envelope"></i> <a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a> or <i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/andersskaarupjohansen/">/andersskaarupjohansen</a></div></footer>
-<script src="assets/js/main.js?v=3"></script>
+<footer class="colophon">
+  <div class="doc">
+    <div class="colophon-row">
+      <img class="frog" src="assets/img/frog-icon.png" alt="" width="36" height="36" aria-hidden="true">
+      <p>© <span id="y">2026</span> Anders Skaarup Johansen<br>
+        <a class="colophon-links">
+          <a href="mailto:asjo@create.aau.dk">asjo@create.aau.dk</a> ·
+          <a href="https://github.com/OldManAnders" target="_blank" rel="noopener">GitHub</a> ·
+          <a href="https://scholar.google.com/citations?user=NcsD9d0AAAAJ&amp;hl=en" target="_blank" rel="noopener">Scholar</a> ·
+          <a href="https://orcid.org/0000-0002-9330-522X" target="_blank" rel="noopener">ORCID</a> ·
+          <a href="https://www.linkedin.com/in/andersskaarupjohansen/" target="_blank" rel="noopener">LinkedIn</a>
+        </a>
+      </p>
+    </div>
+  </div>
+</footer>
+
+<script src="assets/js/main.js?v=4"></script>
+
 </body>
 </html>
